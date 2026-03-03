@@ -1,0 +1,20 @@
+@charset "ISO-8859-1";
+body {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 2rem;
+}
+
+#centrao{
+	margin-top: 50%;
+	justify-content: center;
+	align-content: center;
+	
+	
+}

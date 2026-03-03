@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="02c81240-bd9a-42dd-a985-510f05aed054" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Coinvert.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HELP.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projeto_integrado.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/Entidades/AuthenticationDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/Entidades/LoginResponseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/Entidades/OpCambio.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/Entidades/RegistreDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/Entidades/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/Erros/Erros.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/Infra/CurrencyAPI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/Infra/EmailService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/Infra/SecurityConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/Infra/SecurityFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/Infra/TokenService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/ProjetoIntegradoApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/Repositories/OpcambioRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/Repositories/RepositorioUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/controllers/Authenticationcontroller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/controllers/AuthorizationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/controllers/Cadastrojpa.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/controllers/Checkout.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/controllers/CrudUsuario.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/controllers/CurrencyController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/controllers/HomeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/controllers/OpCambioDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/controllers/Opcambioservice.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/controllers/Pagamentocontroller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/controllers/Sessao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/controllers/logout.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/controllers/perfil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/enums/Estatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/enums/TipoOP.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/enums/UserRoles.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/mainn.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/Headers.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/Logado.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/Style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/perfil.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/singin.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/fundo.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/logo_branca.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/logo_preta.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/logo_verde.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/logoverde_sem.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/grafico-simulacao.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/Cadastro.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/Coinvert.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/Login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/logado.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/perfil.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/recuperar-senha.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/projeto_integrado/ProjetoIntegradoApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/Entidades/AuthenticationDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/Entidades/LoginResponseDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/Entidades/OpCambio.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/Entidades/RegistreDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/Entidades/User.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/Erros/Erros.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/Infra/CurrencyAPI.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/Infra/EmailService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/Infra/SecurityConfiguration.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/Infra/SecurityFilter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/Infra/TokenService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/ProjetoIntegradoApplication.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/Repositories/OpcambioRepo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/Repositories/RepositorioUser.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/controllers/Authenticationcontroller.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/controllers/AuthorizationService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/controllers/Cadastrojpa.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/controllers/Checkout.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/controllers/CrudUsuario.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/controllers/CurrencyController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/controllers/HomeController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/controllers/OpCambioDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/controllers/Opcambioservice.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/controllers/Pagamentocontroller.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/controllers/Sessao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/controllers/logout.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/controllers/perfil.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/enums/Estatus.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/enums/TipoOP.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/enums/UserRoles.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/mainn.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/css/Headers.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/css/Logado.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/css/Style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/css/perfil.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/css/singin.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/img/fundo.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/img/logo_branca.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/img/logo_preta.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/img/logo_verde.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/img/logoverde_sem.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/js/grafico-simulacao.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/js/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/Cadastro.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/Coinvert.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/Login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/logado.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/perfil.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/recuperar-senha.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/projeto_integrado/ProjetoIntegradoApplicationTests.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/test/java/projeto_integrado/ProjetoIntegradoApplicationTests.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Enum" />
+        <option value="Class" />
+        <option value="Record" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="3ADVIVkPIlm2vUhTwTWXTfNBKVT" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.ProjetoIntegradoApplication.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/joaog/OneDrive/Desktop/Coinvert",
+    "onboarding.tips.debug.path": "C:/Users/joaog/OneDrive/Desktop/Coinvert/src/Main.java",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\joaog\OneDrive\Desktop\Coinvert" />
+    </key>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="02c81240-bd9a-42dd-a985-510f05aed054" name="Changes" comment="" />
+      <created>1772127050977</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1772127050977</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>11</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="org.springframework.data.mapping.PropertyReferenceException" package="org.springframework.data.mapping" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.time.DateTimeException" package="java.time" />
+          <option name="timeStamp" value="3" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

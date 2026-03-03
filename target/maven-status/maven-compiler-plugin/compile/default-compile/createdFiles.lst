@@ -1,0 +1,9 @@
+projeto_integrado\ProjetoIntegradoApplication.class
+projeto_integrado\JDBC.class
+projeto_integrado\controllers\controllers_de_login\login.class
+projeto_integrado\UserDAO.class
+projeto_integrado\mainn.class
+projeto_integrado\controllers\Entidades\Repositories\RepositorioUser.class
+projeto_integrado\controllers\Entidades\User.class
+projeto_integrado\CurrencyAPI.class
+projeto_integrado\controllers\controllers_de_login\Cadastrojpa.class
