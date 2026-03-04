@@ -1,4 +1,4 @@
-package projeto_integrado.Entidades;
+package projeto_integrado.dto;
 
 public record AuthenticationDTO(String email, String senha) {
 }

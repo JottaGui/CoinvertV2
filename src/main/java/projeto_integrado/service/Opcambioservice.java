@@ -10,23 +10,19 @@ import com.mercadopago.resources.preference.Preference;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import projeto_integrado.Entidades.User;
 import projeto_integrado.Infra.CurrencyAPI;
 import projeto_integrado.Entidades.OpCambio;
 import projeto_integrado.Repositories.OpcambioRepo;
 import projeto_integrado.Repositories.RepositorioUser;
+import projeto_integrado.dto.OpCambioDTO;
 import projeto_integrado.enums.Estatus;
 
-import java.lang.module.Configuration;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 @Service
 public class Opcambioservice {
