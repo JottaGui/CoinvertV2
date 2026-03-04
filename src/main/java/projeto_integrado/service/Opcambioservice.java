@@ -1,4 +1,4 @@
-package projeto_integrado.controllers;
+package projeto_integrado.service;
 
 import com.mercadopago.MercadoPagoConfig;
 import com.mercadopago.client.preference.PreferenceClient;

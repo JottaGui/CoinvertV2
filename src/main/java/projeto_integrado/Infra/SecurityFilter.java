@@ -2,6 +2,7 @@ package projeto_integrado.Infra;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,11 +39,21 @@ public class SecurityFilter extends OncePerRequestFilter {
     }
 
 
-    private String recoverToken(HttpServletRequest request){
+    private String recoverToken(HttpServletRequest request) {
+        String authHeader = request.getHeader("Authorization");
+        if (authHeader != null && authHeader.startsWith("Bearer ")) {
+            return authHeader.substring(7).trim();
+        }
 
-    var authHeader = request.getHeader("Authorization");
-    if (authHeader == null) return null;
-    return authHeader.replace("Bearer", "");
+        Cookie[] cookies = request.getCookies();
+        if (cookies == null) return null;
 
-    }
+        for (Cookie c : cookies) {
+            if ("AUTH_TOKEN".equals(c.getName())) {
+                return c.getValue();
+            }
+        }
+        return null;
+
+}
 }

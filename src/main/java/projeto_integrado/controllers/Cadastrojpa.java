@@ -2,30 +2,28 @@ package projeto_integrado.controllers;
 
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired; 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import jakarta.validation.Valid;
 import projeto_integrado.Entidades.User;
 import projeto_integrado.Repositories.RepositorioUser;
+import projeto_integrado.dto.RegistreDTO;
 
 @Controller
-@RequestMapping("/cadastro")
+@RequestMapping("/cad")
 public class Cadastrojpa {
 
-	@GetMapping
-	public String mostrarcadastro() {
-		return "Cadastro";
-	}
+
 		@Autowired
 		private RepositorioUser repositorioUser;
-		
+		@Autowired
+		private PasswordEncoder passwordEncoder;
+
+
 		@PostMapping
 		public String usuario(@Valid User user) {
 			repositorioUser.save(user);

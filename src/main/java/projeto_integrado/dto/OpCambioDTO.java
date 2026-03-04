@@ -1,4 +1,4 @@
-package projeto_integrado.controllers;
+package projeto_integrado.dto;
 
 import java.math.BigDecimal;
 

@@ -1,4 +1,4 @@
-package projeto_integrado.controllers;
+package projeto_integrado.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,11 +18,9 @@ public class AuthorizationService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         User usuario = repositorioUser.findByEmail(email);
-
         if (usuario == null) {
             throw new UsernameNotFoundException("Usuário não encontrado");
         }
-
         return usuario; // User deve implementar UserDetails
     }
 }

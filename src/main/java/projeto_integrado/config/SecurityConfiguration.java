@@ -1,4 +1,4 @@
-package projeto_integrado.Infra;
+package projeto_integrado.config;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,13 +12,10 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import projeto_integrado.controllers.AuthorizationService;
-
-import java.security.KeyStore;
+import projeto_integrado.Infra.SecurityFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -39,9 +36,22 @@ public class SecurityConfiguration {
                 )
                 .userDetailsService(authorizationService)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/login/login2").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/login/cadastro").permitAll()
+                        .requestMatchers("/css/**", "/js/**", "/images/**", "/webjars/**").permitAll()
+
+                        .requestMatchers("/", "/Coinvert").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/login", "/cadastro").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/Perfil").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/login").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/cadastro").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/cadastro/**").permitAll()
+
+                        .requestMatchers(HttpMethod.GET, "/logout").permitAll()
+
+
                         .anyRequest().authenticated()
+                )
+                .exceptionHandling(ex -> ex
+                        .authenticationEntryPoint((request, response, authException) -> response.sendRedirect("/login"))
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();

@@ -12,7 +12,6 @@ import projeto_integrado.Infra.CurrencyAPI;
 public class CurrencyController {
 
 
-
     private CurrencyAPI api = new CurrencyAPI();
 
     @GetMapping

@@ -1,34 +1,32 @@
 package projeto_integrado.controllers;
 
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.crypto.bcrypt.BCrypt;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import jakarta.servlet.http.HttpSession;
-import projeto_integrado.Entidades.AuthenticationDTO;
-import projeto_integrado.Entidades.LoginResponseDTO;
-import projeto_integrado.Entidades.RegistreDTO;
+import projeto_integrado.dto.AuthenticationDTO;
+import projeto_integrado.dto.LoginResponseDTO;
+import projeto_integrado.dto.RegistreDTO;
 import projeto_integrado.Infra.EmailService;
 import projeto_integrado.Entidades.User;
 import projeto_integrado.Infra.TokenService;
 import projeto_integrado.Repositories.RepositorioUser;
 
 	@Controller
-	@RequestMapping("/login")
 	public class Authenticationcontroller {
 
-		@GetMapping
-		public String mostrarlogin() {
-				return "Login";
-			}
+	//	@GetMapping
+	//	public String mostrarlogin() {
+		//		return "Login";
+			//}
 
 		@Autowired
 		private RepositorioUser  userRepository;
@@ -42,42 +40,24 @@ import projeto_integrado.Repositories.RepositorioUser;
 		TokenService tokenService;
 
 
-		/*@PostMapping("/login")
-		public String verificaLogin(@RequestParam String email, @RequestParam String senha, HttpSession session, Model model) {
-			User usuario = userRepository.findByEmail(email);
-
-			if (usuario != null && usuario.getSenha().equals(senha)) {
-				session.setAttribute("usuariologado", usuario);
-				session.setMaxInactiveInterval(900);
+		@PostMapping("/login")
+		public String login(@ModelAttribute @Valid AuthenticationDTO data,
+							HttpServletResponse response) {
+			try {
+				var auth = authenticationManager.authenticate(
+						new UsernamePasswordAuthenticationToken(data.email(), data.senha())
+				);
+				var token = tokenService.generateToken((User) auth.getPrincipal());
+				Cookie cookie = new Cookie("AUTH_TOKEN", token);
+				cookie.setHttpOnly(true);
+				cookie.setPath("/");
+				cookie.setMaxAge(2 * 60 * 60);
+				response.addCookie(cookie);
 				return "redirect:/logado";
-			} else {
-				return "redirect:/login";
+			} catch (Exception e) {
+				return "email ou senha invalidos";
 			}
 		}
-*/
-
-	@PostMapping("/login2")
-		public ResponseEntity login(@RequestBody @Valid AuthenticationDTO data){
-		var usernamePassword = new UsernamePasswordAuthenticationToken(data.email(), data.senha());
-		var auth = this.authenticationManager.authenticate(usernamePassword);
-
-
-
-		var token = tokenService.generateToken((User) auth.getPrincipal());
-
-        return ResponseEntity.ok(new LoginResponseDTO(token));
-	}
-
-		@PostMapping("/cadastro")
-		public ResponseEntity register (@RequestBody @Valid RegistreDTO data){
-			if (this.userRepository.findByEmail(data.email()) != null ) return ResponseEntity.badRequest().build();
-
-			String encryptedPassword = passwordEncoder.encode(data.senha());
-			User newUser = new User (data.email(), encryptedPassword, data.nome());
-			this.userRepository.save(newUser);
-			return ResponseEntity.ok().build();
-		}
-
 		@GetMapping("/recuperar-senha")
 		public String mostrarFormularioRecuperarSenha() {
 		    return "recuperar-senha"; 
