@@ -9,6 +9,19 @@ body{
 #fundo {
   background-color: var(--fundo-bg);
 }
+#destino{
+    margin-top: 0px;
+    align-items: center;
+    display: flex;
+    height: 38px;
+}
+
+#comprar {
+    width: 40%;
+    height: 38px;
+    position: static;
+}
+
 
 /* Define o tema claro por padrão */
 :root {

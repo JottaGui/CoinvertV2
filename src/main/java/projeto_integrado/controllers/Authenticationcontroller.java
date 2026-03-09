@@ -23,10 +23,7 @@ import projeto_integrado.Repositories.RepositorioUser;
 	@Controller
 	public class Authenticationcontroller {
 
-	//	@GetMapping
-	//	public String mostrarlogin() {
-		//		return "Login";
-			//}
+
 
 		@Autowired
 		private RepositorioUser  userRepository;
@@ -40,7 +37,7 @@ import projeto_integrado.Repositories.RepositorioUser;
 		TokenService tokenService;
 
 
-		@PostMapping("/login")
+		@PostMapping("/login2")
 		public String login(@ModelAttribute @Valid AuthenticationDTO data,
 							HttpServletResponse response) {
 			try {
@@ -58,10 +55,7 @@ import projeto_integrado.Repositories.RepositorioUser;
 				return "email ou senha invalidos";
 			}
 		}
-		@GetMapping("/recuperar-senha")
-		public String mostrarFormularioRecuperarSenha() {
-		    return "recuperar-senha"; 
-		}
+
 
 		@PostMapping("/recuperar-senha")
 		public String recuperarSenha(@RequestParam String email, Model model) {

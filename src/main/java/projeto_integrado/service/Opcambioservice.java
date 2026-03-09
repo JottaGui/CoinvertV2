@@ -12,15 +12,18 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import projeto_integrado.Entidades.User;
 import projeto_integrado.Infra.CurrencyAPI;
 import projeto_integrado.Entidades.OpCambio;
 import projeto_integrado.Repositories.OpcambioRepo;
 import projeto_integrado.Repositories.RepositorioUser;
 import projeto_integrado.dto.OpCambioDTO;
 import projeto_integrado.enums.Estatus;
+import projeto_integrado.enums.TipoOP;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,10 +52,11 @@ public class Opcambioservice {
     MercadoPagoConfig.setAccessToken(accessToken);
     log.info("iniciando mercado pado");}
 
-    public String criarPagamento(OpCambioDTO dto) throws MPException, MPApiException {
+    public String criarPagamento(OpCambioDTO dto, User user) throws MPException, MPApiException {
 
         OpCambio oper = new OpCambio();
 
+        oper.setUser(user);
         oper.setMoeda(dto.getMoeda());
         oper.setQuantidademoeda(dto.getQuantidadeMoeda());
 
@@ -66,6 +70,7 @@ public class Opcambioservice {
         oper.setCotacao(cotacao);
         oper.setValor(valor);
         oper.setEstatus(Estatus.PENDENTE);
+        oper.setOperacao(TipoOP.COMPRA);
 
         oper = repository.save(oper);
 

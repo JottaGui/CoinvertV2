@@ -78,4 +78,11 @@ public class ControllerWeb {
 
         return "redirect:/Coinvert";
     }
+
+    @GetMapping("/recuperar-senha")
+    public String mostrarFormularioRecuperarSenha() {
+        return "recuperar-senha";
+    }
+
+
 }

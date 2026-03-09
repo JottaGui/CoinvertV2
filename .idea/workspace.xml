@@ -5,47 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="02c81240-bd9a-42dd-a985-510f05aed054" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/controllers/ControllerWeb.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/dto/LoginResponseDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/dto/RegistreDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/projeto_integrado/Entidades/AuthenticationDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/dto/AuthenticationDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/projeto_integrado/Entidades/LoginResponseDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/projeto_integrado/Entidades/RegistreDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/projeto_integrado/Infra/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/config/SecurityConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/projeto_integrado/Infra/SecurityFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/Infra/SecurityFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/projeto_integrado/Infra/TokenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/Infra/TokenService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/projeto_integrado/config/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/config/SecurityConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/projeto_integrado/controllers/Authenticationcontroller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/controllers/Authenticationcontroller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/projeto_integrado/controllers/AuthorizationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/config/AuthorizationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/projeto_integrado/controllers/Cadastrojpa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/controllers/Cadastrojpa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/projeto_integrado/controllers/CrudUsuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/controllers/CrudUsuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/projeto_integrado/controllers/CurrencyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/controllers/CurrencyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/projeto_integrado/controllers/HomeController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/projeto_integrado/controllers/OpCambioDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/dto/OpCambioDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/projeto_integrado/controllers/Opcambioservice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/service/Opcambioservice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/projeto_integrado/controllers/ControllerWeb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/controllers/ControllerWeb.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/projeto_integrado/controllers/Pagamentocontroller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/controllers/Pagamentocontroller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/projeto_integrado/controllers/Sessao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/projeto_integrado/controllers/logout.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/projeto_integrado/controllers/perfil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/projeto_integrado/enums/Estatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/enums/Estatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/projeto_integrado/service/Opcambioservice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/service/Opcambioservice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/Logado.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/Logado.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Coinvert.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Coinvert.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/logado.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/logado.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/projeto_integrado/Entidades/AuthenticationDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/projeto_integrado/Entidades/LoginResponseDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/projeto_integrado/Entidades/RegistreDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/projeto_integrado/Infra/SecurityConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/projeto_integrado/Infra/SecurityFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/Infra/SecurityFilter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/projeto_integrado/Infra/TokenService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/Infra/TokenService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/projeto_integrado/config/SecurityConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/config/SecurityConfiguration.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/projeto_integrado/controllers/Authenticationcontroller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/controllers/Authenticationcontroller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/projeto_integrado/controllers/AuthorizationService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/projeto_integrado/controllers/Cadastrojpa.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/controllers/Cadastrojpa.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/projeto_integrado/controllers/CrudUsuario.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/controllers/CrudUsuario.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/projeto_integrado/controllers/CurrencyController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/controllers/CurrencyController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/projeto_integrado/controllers/HomeController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/projeto_integrado/controllers/OpCambioDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/projeto_integrado/controllers/Opcambioservice.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/projeto_integrado/controllers/ControllerWeb.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/controllers/ControllerWeb.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/projeto_integrado/controllers/Pagamentocontroller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/controllers/Pagamentocontroller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/projeto_integrado/controllers/Sessao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/projeto_integrado/controllers/logout.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/projeto_integrado/controllers/perfil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/projeto_integrado/enums/Estatus.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/enums/Estatus.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/projeto_integrado/service/Opcambioservice.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/service/Opcambioservice.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/Login.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/Login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/logado.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/logado.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -77,22 +58,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.ProjetoIntegradoApplication.executor": "Run",
-    "Maven.projeto_integrado [package].executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/joaog/OneDrive/Desktop/Coinvert",
-    "onboarding.tips.debug.path": "C:/Users/joaog/OneDrive/Desktop/Coinvert/src/Main.java",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.ProjetoIntegradoApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.projeto_integrado [package].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/joaog/OneDrive/Desktop/Coinvert&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/joaog/OneDrive/Desktop/Coinvert/src/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.javacompiler&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\joaog\OneDrive\Desktop\Coinvert" />

@@ -4,5 +4,6 @@ public enum Estatus {
 
     APROVADA,
     PENDENTE,
-    NEGADA
+    NEGADA,
+    EXPIRADA
 }
