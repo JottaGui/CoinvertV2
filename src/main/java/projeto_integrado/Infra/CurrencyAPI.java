@@ -43,13 +43,12 @@ public class CurrencyAPI {
     }
     public String valoremadata(String origem, String destino, Integer ano, Integer mes, Integer dia) {
         try {
-            // Validação da data usando LocalDate
             LocalDate data;
             try {
                 data = LocalDate.of(ano, mes, dia);
             } catch (DateTimeException e) {
                 System.out.println("Data inválida: " + ano + "-" + mes + "-" + dia);
-                return null;  // ou lançar exceção ou tratar como preferir
+                return null;
             }
 
             LocalDate hoje = LocalDate.now();
@@ -61,10 +60,13 @@ public class CurrencyAPI {
             destino = destino.toUpperCase();
             origem = origem.toUpperCase();
 
-            String dataStr = data.toString(); // já vem no formato yyyy-MM-dd
+            String dataStr = data.toString();
             String url = "https://api.frankfurter.app/" + dataStr + "?from=" + origem + "&to=" + destino;
 
-            HttpClient client = HttpClient.newHttpClient();
+            HttpClient client = HttpClient.newBuilder()
+                    .followRedirects(HttpClient.Redirect.ALWAYS)
+                    .build();
+
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create(url))
                     .header("User-Agent", "Java 11 HttpClient")
@@ -74,7 +76,7 @@ public class CurrencyAPI {
 
             if (response.statusCode() != 200) {
                 System.out.println("Cotação não disponível para a data: " + dataStr + " (HTTP " + response.statusCode() + ")");
-                return null; // ou tratar de outro modo
+                return null;
             }
 
             JSONObject json = new JSONObject(response.body());

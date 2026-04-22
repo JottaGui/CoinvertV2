@@ -39,16 +39,18 @@ public class SecurityConfiguration {
                         .requestMatchers("/css/**", "/js/**", "/images/**", "/webjars/**").permitAll()
 
                         .requestMatchers("/", "/Coinvert").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/Coinvert/simulacao").permitAll()
+                        .requestMatchers("/simulacao").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/Coinvert/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/logado/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/login", "/cadastro").permitAll()
                         .requestMatchers(HttpMethod.GET, "/cambio/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/Perfil").permitAll()
                         .requestMatchers(HttpMethod.POST, "/login2").permitAll()
                         .requestMatchers(HttpMethod.POST, "/cadastro").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/Coinvert/simulacao").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/logado/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/Coinvert/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/cambio/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/cadastro/**").permitAll()
-
                         .requestMatchers(HttpMethod.GET, "/logout").permitAll()
 
 

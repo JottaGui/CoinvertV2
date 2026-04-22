@@ -6,19 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="02c81240-bd9a-42dd-a985-510f05aed054" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/projeto_integrado/Infra/SecurityFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/Infra/SecurityFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/projeto_integrado/Infra/CurrencyAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/Infra/CurrencyAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/projeto_integrado/ProjetoIntegradoApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/ProjetoIntegradoApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/projeto_integrado/config/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/config/SecurityConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/projeto_integrado/controllers/Authenticationcontroller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/controllers/Authenticationcontroller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/projeto_integrado/controllers/ControllerWeb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/controllers/ControllerWeb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/projeto_integrado/controllers/Pagamentocontroller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/controllers/Pagamentocontroller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/projeto_integrado/enums/Estatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/enums/Estatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/projeto_integrado/service/Opcambioservice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/service/Opcambioservice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/Logado.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/Logado.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Coinvert.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Coinvert.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/projeto_integrado/controllers/CurrencyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/controllers/CurrencyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/grafico-simulacao.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/grafico-simulacao.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/logado.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/logado.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/projeto_integrado/Infra/SecurityFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/Infra/SecurityFilter.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/projeto_integrado/config/SecurityConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/config/SecurityConfiguration.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/projeto_integrado/controllers/Authenticationcontroller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/controllers/Authenticationcontroller.class" afterDir="false" />
@@ -26,8 +19,6 @@
       <change beforePath="$PROJECT_DIR$/target/classes/projeto_integrado/controllers/Pagamentocontroller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/controllers/Pagamentocontroller.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/projeto_integrado/enums/Estatus.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/enums/Estatus.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/projeto_integrado/service/Opcambioservice.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/service/Opcambioservice.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/Login.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/Login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/logado.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/logado.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,8 +38,13 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/projeto_integrado/config/SecurityConfiguration.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/static/js/grafico-simulacao.js" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/templates/logado.html" root0="SKIP_INSPECTION" />
+  </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5

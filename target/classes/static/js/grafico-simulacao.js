@@ -44,9 +44,8 @@ function extrairNumero(texto) {
   return parseFloat(texto.replace(/[^\d,.-]/g, '').replace(',', '.')) || 0;
 }
 
-// Atualiza gráfico após HTMX atualizar a div #simulacaor
 document.body.addEventListener('htmx:afterSwap', (event) => {
-  if (event.detail.target.id === 'simulacaor') {
+  if (event.detail.target.id === 'simulacao') {
     const cotacaoPassadaText = document.getElementById('cotacaoPassada')?.innerText || '';
     const cotacaoAtualText = document.getElementById('cotacaoAtual')?.innerText || '';
     const valorConvertidoNoPassadoText = document.getElementById('valorConvertidoNoPassado')?.innerText || '';
@@ -61,7 +60,6 @@ document.body.addEventListener('htmx:afterSwap', (event) => {
   }
 });
 
-// Inicializa gráfico vazio no carregamento da página
 window.addEventListener('load', () => {
   criarGrafico(0, 0, 0, 0);
 });

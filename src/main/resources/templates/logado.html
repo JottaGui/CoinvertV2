@@ -295,12 +295,14 @@
     </button>
 </p>
 
+
+
 <div style="min-height: 200px;">
     <div class="collapse collapse-horizontal" id="collapseWidthExample">
         <div class="container">
             <form method="post"
                   hx-post="/Coinvert/simulacao"
-                  hx-target="#simulacaor"
+                  hx-target="#simulacao"
                   hx-swap="innerHTML"
                   hx-trigger="load, change from:select, keyup from:input, change from:input[type='date']">
 
@@ -366,7 +368,7 @@
                             <input type="date" class="form-control" name="data" required>
                         </div>
 
-                        <div id="simulacaor" th:fragment="simulacaor" class="container mt-3">
+                        <div id="simulacao" th:fragment="simulacao" class="container mt-3">
                             <div class="card text-bg-dark border-light shadow-lg rounded-4">
                                 <div class="card-header">
                                     <h5 class="mb-0">Cotação</h5>
@@ -414,7 +416,7 @@
 </div>
 
 
-
+<br><br><br><br><br><br>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
