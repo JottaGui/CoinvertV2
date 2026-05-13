@@ -1,38 +1,134 @@
 let grafico;
 
+function formatarMoeda(valor) {
+  return new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL'
+  }).format(valor || 0);
+}
+
 function criarGrafico(cotacaoPassada, cotacaoAtual, valorConvertidoNoPassado, valorHoje) {
-  const ctx = document.getElementById('graficoCotacao').getContext('2d');
+  const canvas = document.getElementById('graficoCotacao');
+
+  if (!canvas) return;
+
+  const ctx = canvas.getContext('2d');
 
   if (grafico) {
     grafico.destroy();
   }
 
+  const gradient1 = ctx.createLinearGradient(0, 0, 0, 350);
+  gradient1.addColorStop(0, 'rgba(49, 208, 127, 0.95)');
+  gradient1.addColorStop(1, 'rgba(49, 208, 127, 0.45)');
+
+  const gradient2 = ctx.createLinearGradient(0, 0, 0, 350);
+  gradient2.addColorStop(0, 'rgba(13, 110, 253, 0.95)');
+  gradient2.addColorStop(1, 'rgba(13, 110, 253, 0.45)');
+
+  const gradient3 = ctx.createLinearGradient(0, 0, 0, 350);
+  gradient3.addColorStop(0, 'rgba(99, 102, 241, 0.95)');
+  gradient3.addColorStop(1, 'rgba(99, 102, 241, 0.45)');
+
+  const gradient4 = ctx.createLinearGradient(0, 0, 0, 350);
+  gradient4.addColorStop(0, 'rgba(34, 211, 238, 0.95)');
+  gradient4.addColorStop(1, 'rgba(34, 211, 238, 0.45)');
+
   grafico = new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: ['Cotação Passada', 'Cotação Atual', 'Valor no Passado', 'Valor Hoje'],
+      labels: [
+        'Cotação passada',
+        'Cotação atual',
+        'Valor na data',
+        'Valor hoje'
+      ],
       datasets: [{
         label: 'Valores',
-        data: [cotacaoPassada, cotacaoAtual, valorConvertidoNoPassado, valorHoje],
-        backgroundColor: [
-          'rgba(54, 162, 235, 0.7)',
-          'rgba(255, 206, 86, 0.7)',
-          'rgba(75, 192, 192, 0.7)',
-          'rgba(153, 102, 255, 0.7)'
+        data: [
+          cotacaoPassada,
+          cotacaoAtual,
+          valorConvertidoNoPassado,
+          valorHoje
         ],
+        backgroundColor: [gradient1, gradient2, gradient3, gradient4],
         borderColor: [
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)'
+          'rgba(49, 208, 127, 1)',
+          'rgba(13, 110, 253, 1)',
+          'rgba(99, 102, 241, 1)',
+          'rgba(34, 211, 238, 1)'
         ],
-        borderWidth: 1
+        borderWidth: 1.5,
+        borderRadius: 12,
+        borderSkipped: false,
+        maxBarThickness: 80
       }]
     },
     options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      animation: {
+        duration: 700,
+        easing: 'easeOutQuart'
+      },
+      plugins: {
+        legend: {
+          display: true,
+          labels: {
+            color: '#dbe4f0',
+            font: {
+              size: 12,
+              weight: '600'
+            },
+            usePointStyle: true,
+            pointStyle: 'rectRounded'
+          }
+        },
+        tooltip: {
+          backgroundColor: 'rgba(15, 23, 34, 0.96)',
+          titleColor: '#ffffff',
+          bodyColor: '#dbe4f0',
+          borderColor: 'rgba(148, 163, 184, 0.20)',
+          borderWidth: 1,
+          padding: 12,
+          callbacks: {
+            label: function(context) {
+              return ` ${formatarMoeda(context.raw)}`;
+            }
+          }
+        }
+      },
       scales: {
+        x: {
+          ticks: {
+            color: '#cbd5e1',
+            font: {
+              size: 11,
+              weight: '600'
+            }
+          },
+          grid: {
+            display: false
+          },
+          border: {
+            color: 'rgba(148, 163, 184, 0.12)'
+          }
+        },
         y: {
-          beginAtZero: true
+          beginAtZero: true,
+          ticks: {
+            color: '#cbd5e1',
+            callback: function(value) {
+              return formatarMoeda(value);
+            }
+          },
+          grid: {
+            color: 'rgba(148, 163, 184, 0.10)',
+            drawBorder: false
+          },
+          border: {
+            display: false
+          }
         }
       }
     }
@@ -61,5 +157,8 @@ document.body.addEventListener('htmx:afterSwap', (event) => {
 });
 
 window.addEventListener('load', () => {
-  criarGrafico(0, 0, 0, 0);
+  const canvas = document.getElementById('graficoCotacao');
+  if (canvas) {
+    criarGrafico(0, 0, 0, 0);
+  }
 });

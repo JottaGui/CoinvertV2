@@ -36,9 +36,9 @@ public class SecurityConfiguration {
                 )
                 .userDetailsService(authorizationService)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/css/**", "/js/**", "/images/**", "/webjars/**").permitAll()
+                        .requestMatchers("/css/**","/static/**", "/js/**", "/img/**", "/webjars/**").permitAll()
 
-                        .requestMatchers("/", "/Coinvert").permitAll()
+                        .requestMatchers("/", "/Coinvert","/dashboard").permitAll()
                         .requestMatchers("/simulacao").permitAll()
                         .requestMatchers(HttpMethod.GET, "/Coinvert/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/logado/**").permitAll()
@@ -52,6 +52,9 @@ public class SecurityConfiguration {
                         .requestMatchers(HttpMethod.POST, "/cambio/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/cadastro/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/logout").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/dashboard/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/dashboard/**").permitAll()
+
 
 
                         .anyRequest().authenticated()

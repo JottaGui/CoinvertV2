@@ -30,9 +30,11 @@ public class CrudUsuario {
         if (principal == null) {
             return "/login";
         }
+
         model.addAttribute("usuario", principal);
         return "Perfil";
     }
+
 
     @PostMapping("/editar-dados")
     public String salvarEdicao(@RequestParam String nome,
@@ -56,7 +58,7 @@ public class CrudUsuario {
 
         repositorioUser.save(usuario);
 
-        return "redirect:/Perfil";
+        return "redirect:/dash";
     }
 
 }

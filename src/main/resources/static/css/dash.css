@@ -1,0 +1,684 @@
+:root {
+    --bg-dark: #070d14;
+    --panel-dark: rgba(15, 23, 34, 0.94);
+    --panel-soft: rgba(22, 33, 48, 0.88);
+    --border-soft: rgba(148, 163, 184, 0.22);
+    --text-main: #f8fafc;
+    --text-muted: #a8b3c5;
+    --blue: #0d6efd;
+    --blue-hover: #2b7fff;
+    --green: #31d07f;
+    --red: #ef4444;
+    --purple: #6366f1;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    min-height: 100%;
+    margin: 0;
+    font-family: Inter, Arial, Helvetica, sans-serif;
+    color: var(--text-main);
+}
+
+body {
+    background:
+        linear-gradient(rgba(6, 12, 20, 0.88), rgba(6, 12, 20, 0.94)),
+        url('../img/fundo.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* Página */
+
+.coinvert-page {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at top, rgba(31, 111, 235, 0.12), transparent 38%),
+        radial-gradient(circle at bottom left, rgba(49, 208, 127, 0.07), transparent 32%);
+}
+
+.dashboard-page {
+    min-height: 100vh;
+}
+
+/* Header */
+
+.coinvert-header {
+    height: 92px;
+    background: rgba(7, 13, 20, 0.92);
+    border-bottom: 1px solid rgba(148, 163, 184, 0.14);
+    backdrop-filter: blur(14px);
+}
+
+.coinvert-header-content {
+    max-width: 1440px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 34px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.coinvert-brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.coinvert-logo {
+    width: 138px;
+    max-height: 54px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.coinvert-user {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.coinvert-user img {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.55);
+    object-fit: cover;
+}
+
+/* Dropdown */
+
+.dropdown-menu {
+    background: #111827;
+    border: 1px solid rgba(148, 163, 184, 0.20);
+    border-radius: 14px;
+    padding: 8px;
+}
+
+.dropdown-item {
+    color: #e5e7eb;
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-weight: 500;
+}
+
+.dropdown-item:hover {
+    background: rgba(13, 110, 253, 0.18);
+    color: #fff;
+}
+
+.dropdown-divider {
+    border-color: rgba(148, 163, 184, 0.16);
+}
+
+/* Main */
+
+.dashboard-main {
+    width: 100%;
+    padding: 72px 24px 80px;
+    display: flex;
+    justify-content: center;
+}
+
+.dashboard-card {
+    width: min(100%, 1220px);
+    padding: 42px;
+    border-radius: 24px;
+    background:
+        linear-gradient(145deg, rgba(17, 27, 42, 0.96), rgba(9, 15, 25, 0.96));
+    border: 1px solid var(--border-soft);
+    box-shadow:
+        0 28px 80px rgba(0, 0, 0, 0.46),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+/* Título */
+
+.dashboard-title-area {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    margin-bottom: 34px;
+}
+
+.dashboard-title-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: var(--green);
+    background: rgba(49, 208, 127, 0.10);
+    border: 1px solid rgba(49, 208, 127, 0.16);
+    font-size: 32px;
+}
+
+.dashboard-title-area h1 {
+    margin: 0;
+    font-size: 34px;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: var(--text-main);
+}
+
+.dashboard-title-area p {
+    margin: 8px 0 0;
+    font-size: 17px;
+    color: var(--text-muted);
+}
+
+/* Layout */
+
+.dashboard-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 32px;
+    align-items: stretch;
+}
+
+/* Perfil */
+
+.profile-panel {
+    padding: 22px;
+    border-radius: 22px;
+    background: rgba(9, 15, 25, 0.72);
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.03),
+        0 18px 45px rgba(0, 0, 0, 0.22);
+}
+
+.profile-photo-box {
+    width: 100%;
+    height: 260px;
+    border-radius: 18px;
+    overflow: hidden;
+    background:
+        linear-gradient(145deg, rgba(22, 33, 48, 0.95), rgba(9, 15, 25, 0.95));
+    border: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+.profile-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Info perfil */
+
+.profile-info {
+    margin-top: 20px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.14);
+}
+
+.profile-info h2 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+}
+
+.profile-info p {
+    margin: 6px 0 0;
+    color: var(--text-muted);
+    font-size: 14px;
+    word-break: break-word;
+}
+
+/* Botões do perfil */
+
+.profile-actions {
+    margin-top: 20px;
+    display: grid;
+    gap: 14px;
+}
+
+.profile-action-btn {
+    height: 58px;
+    border-radius: 14px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 18px;
+    font-size: 16px;
+    font-weight: 700;
+    transition: 0.2s ease;
+}
+
+.profile-action-btn i {
+    font-size: 20px;
+}
+
+.edit-btn {
+    color: #73b4ff;
+    background: rgba(13, 110, 253, 0.10);
+    border: 1px solid rgba(59, 130, 246, 0.36);
+}
+
+.edit-btn:hover {
+    color: #ffffff;
+    background: rgba(13, 110, 253, 0.20);
+    transform: translateY(-1px);
+}
+
+.delete-btn {
+    color: #ff7b86;
+    background: rgba(220, 38, 38, 0.10);
+    border: 1px solid rgba(239, 68, 68, 0.36);
+}
+
+.delete-btn:hover {
+    color: #ffffff;
+    background: rgba(220, 38, 38, 0.20);
+    transform: translateY(-1px);
+}
+
+/* Conteúdo */
+
+.dashboard-content {
+    min-width: 0;
+}
+
+.wallet-summary {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+/* Campo Moeda */
+
+.field-box {
+    min-height: 116px;
+    padding: 18px 20px;
+    border-radius: 16px;
+    background: rgba(9, 15, 25, 0.72);
+    border: 1px solid rgba(148, 163, 184, 0.30);
+    transition: 0.2s ease;
+}
+
+.field-box:hover,
+.field-box:focus-within {
+    border-color: rgba(59, 130, 246, 0.75);
+    box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.12);
+}
+
+.field-box label {
+    display: block;
+    margin-bottom: 13px;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #c7d2e4;
+}
+
+.wallet-select {
+    width: 100%;
+    height: 48px;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: var(--text-main);
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.wallet-select option {
+    background: #111827;
+    color: #fff;
+}
+
+/* Saldo */
+
+.balance-box {
+    min-height: 116px;
+    padding: 24px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    border: 1px solid rgba(49, 208, 127, 0.18);
+    background:
+        linear-gradient(90deg, rgba(49, 208, 127, 0.16), rgba(22, 33, 48, 0.70));
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.04),
+        0 16px 38px rgba(0, 0, 0, 0.20);
+}
+
+.balance-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    color: #ffffff;
+    background: rgba(49, 208, 127, 0.42);
+    font-size: 28px;
+}
+
+.balance-box span {
+    display: block;
+    margin-bottom: 6px;
+    color: #c6d0df;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.balance-box strong {
+    display: block;
+    color: #ffffff;
+    font-size: 34px;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+}
+
+/* Compras */
+
+.purchases-section {
+    width: 100%;
+}
+
+.section-header {
+    margin-bottom: 18px;
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 18px;
+}
+
+.section-header h2 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+}
+
+.section-header p {
+    margin: 6px 0 0;
+    color: var(--text-muted);
+    font-size: 15px;
+}
+
+.section-badge {
+    height: 42px;
+    padding: 0 16px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: #dbeafe;
+    background: rgba(13, 110, 253, 0.12);
+    border: 1px solid rgba(59, 130, 246, 0.25);
+    font-size: 14px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+/* Tabela */
+
+.table-card {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 18px;
+    background: rgba(9, 15, 25, 0.72);
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.03),
+        0 18px 45px rgba(0, 0, 0, 0.20);
+}
+
+.table-card table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-card thead {
+    background: rgba(22, 33, 48, 0.82);
+}
+
+.table-card th {
+    height: 64px;
+    padding: 0 28px;
+    color: #cbd5e1;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.table-card td {
+    height: 66px;
+    padding: 0 28px;
+    color: #e5e7eb;
+    font-size: 16px;
+    font-weight: 600;
+    border-top: 1px solid rgba(148, 163, 184, 0.10);
+}
+
+.table-card tbody tr {
+    background: rgba(9, 15, 25, 0.54);
+    transition: 0.2s ease;
+}
+
+.table-card tbody tr:hover {
+    background: rgba(22, 33, 48, 0.64);
+}
+
+.table-card td:first-child:not(.empty-row) {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Bolinhas das moedas */
+
+.coin-dot {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+    border: 2px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+}
+
+.coin-usd {
+    background:
+        linear-gradient(180deg,
+        #ef4444 0%, #ef4444 14%,
+        #ffffff 14%, #ffffff 28%,
+        #ef4444 28%, #ef4444 42%,
+        #ffffff 42%, #ffffff 56%,
+        #ef4444 56%, #ef4444 70%,
+        #ffffff 70%, #ffffff 84%,
+        #ef4444 84%, #ef4444 100%);
+}
+
+.coin-eur {
+    background: radial-gradient(circle, #facc15 0 10%, #1d4ed8 11%);
+}
+
+.coin-gbp {
+    background: linear-gradient(135deg, #1d4ed8 0 42%, #ffffff 42% 52%, #ef4444 52% 64%, #1d4ed8 64%);
+}
+
+.coin-brl {
+    background: radial-gradient(circle, #2563eb 0 28%, #facc15 29% 48%, #16a34a 49%);
+}
+
+.coin-default {
+    background: #64748b;
+}
+
+/* Estado vazio */
+
+.table-card td.empty-row {
+    display: table-cell !important;
+    height: 190px;
+    text-align: center;
+    padding: 34px 20px;
+}
+
+.empty-state {
+    display: grid;
+    place-items: center;
+    gap: 8px;
+    color: #cbd5e1;
+}
+
+.empty-state i {
+    width: 58px;
+    height: 58px;
+    margin-bottom: 6px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: var(--green);
+    background: rgba(49, 208, 127, 0.10);
+    border: 1px solid rgba(49, 208, 127, 0.18);
+    font-size: 26px;
+}
+
+.empty-state strong {
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.empty-state span {
+    color: var(--text-muted);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Responsivo */
+
+@media (max-width: 1100px) {
+    .dashboard-layout {
+        grid-template-columns: 240px 1fr;
+        gap: 24px;
+    }
+
+    .wallet-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .balance-box {
+        min-height: 104px;
+    }
+}
+
+@media (max-width: 900px) {
+    .dashboard-main {
+        padding: 40px 18px 70px;
+    }
+
+    .dashboard-card {
+        padding: 26px;
+        border-radius: 22px;
+    }
+
+    .dashboard-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-panel {
+        max-width: 420px;
+        width: 100%;
+    }
+
+    .profile-photo-box {
+        height: 300px;
+    }
+
+    .section-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    .coinvert-header {
+        height: 78px;
+    }
+
+    .coinvert-header-content {
+        padding: 0 18px;
+    }
+
+    .coinvert-logo {
+        width: 116px;
+    }
+
+    .dashboard-title-area {
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .dashboard-title-icon {
+        width: 54px;
+        height: 54px;
+        font-size: 24px;
+    }
+
+    .dashboard-title-area h1 {
+        font-size: 26px;
+    }
+
+    .dashboard-title-area p {
+        font-size: 15px;
+    }
+
+    .balance-box {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .balance-box strong {
+        font-size: 30px;
+    }
+
+    .table-card {
+        overflow-x: auto;
+    }
+
+    .table-card table {
+        min-width: 680px;
+    }
+}
+
+@media (max-width: 480px) {
+    .dashboard-card {
+        padding: 20px;
+    }
+
+    .profile-panel {
+        padding: 18px;
+    }
+
+    .profile-photo-box {
+        height: 240px;
+    }
+
+    .section-header h2 {
+        font-size: 21px;
+    }
+}

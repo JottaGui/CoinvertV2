@@ -42,10 +42,29 @@ public class ControllerWeb {
         return "Cadastro";
     }
 
+    @GetMapping("/dash")
+    public String mostrardash(Model model,
+                              @AuthenticationPrincipal User principal) {
+
+        if (principal == null) {
+            return "redirect:/";
+        }
+
+        User usuario = userRepository.findByEmail(principal.getEmail());
+
+        if (usuario == null) {
+            return "redirect:/";
+        }
+
+        model.addAttribute("usuario", usuario);
+        return "dashboard";
+    }
+
     @GetMapping("/perfil")
     public String perfilpagina() {
         return "perfil";
     }
+
     @PostMapping("/cadastro")
     public String register(@ModelAttribute @Valid RegistreDTO data) {
         if (userRepository.findByEmail(data.email()) != null) {
