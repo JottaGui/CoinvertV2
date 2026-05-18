@@ -5,27 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="02c81240-bd9a-42dd-a985-510f05aed054" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/projeto_integrado/Entidades/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/Entidades/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/projeto_integrado/ProjetoIntegradoApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/ProjetoIntegradoApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/projeto_integrado/config/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/config/SecurityConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/projeto_integrado/Repositories/OpcambioRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/Repositories/OpcambioRepo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/projeto_integrado/controllers/ControllerWeb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/controllers/ControllerWeb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/projeto_integrado/controllers/CrudUsuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projeto_integrado/controllers/CrudUsuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/Headers.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/Headers.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/Logado.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/Logado.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/perfil.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/perfil.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/grafico-simulacao.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/grafico-simulacao.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Coinvert.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Coinvert.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/logado.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/logado.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/perfil.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/perfil.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/projeto_integrado/config/SecurityConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/config/SecurityConfiguration.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/projeto_integrado/controllers/ControllerWeb.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/projeto_integrado/controllers/ControllerWeb.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/Headers.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/Headers.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/Logado.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/Logado.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/perfil.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/perfil.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/grafico-simulacao.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/grafico-simulacao.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/Coinvert.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/Coinvert.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/logado.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/logado.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/dashboard.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,8 +24,8 @@
         <option value="Interface" />
         <option value="Enum" />
         <option value="Record" />
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -65,23 +51,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.ProjetoIntegradoApplication.executor&quot;: &quot;Run&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;Maven.projeto_integrado [package].executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/joaog/OneDrive/Desktop/Coinvert&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/joaog/OneDrive/Desktop/Coinvert/src/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.javacompiler&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.ProjetoIntegradoApplication.executor": "Run",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Maven.projeto_integrado [package].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/joaog/OneDrive/Desktop/Coinvert",
+    "onboarding.tips.debug.path": "C:/Users/joaog/OneDrive/Desktop/Coinvert/src/Main.java",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\joaog\OneDrive\Desktop\Coinvert" />

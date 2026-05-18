@@ -9,6 +9,7 @@ import projeto_integrado.Entidades.User;
 import projeto_integrado.enums.Estatus;
 import projeto_integrado.enums.TipoOP;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Repository
@@ -17,16 +18,20 @@ public interface OpcambioRepo extends JpaRepository<OpCambio, Long> {
     List<OpCambio> findByUser(User user);
     List<OpCambio> findByUserAndMoeda(User user, String moeda);
 
-    @Query("SELECT SUM(o.quantidademoeda) FROM OpCambio o " +
-            "WHERE o.user = :user " +
-            "AND o.moeda = :moeda " +
-            "AND o.operacao = :operacao")
+    @Query("""
+       SELECT SUM(o.quantidademoeda)
+       FROM OpCambio o
+       WHERE o.moeda = :moeda
+       AND o.user.id = :userId
+       """)
+    BigDecimal somarMoedaPorUsuario(@Param("moeda") String moeda,
+                                    @Param("userId") Long userId);
 
-    Double somarQuantidadePorTipo(
-       @Param("user")    User user,
-       @Param("moeda")   String moeda,
-       @Param("operacao")TipoOP operacao
-    );
+
 
     List<OpCambio> findByUserAndEstatus(User user, Estatus Estatus);
+    List<OpCambio> findByEstatus(Estatus Estatus);
+
+    @Query("SELECT o.id FROM OpCambio o WHERE o.estatus = :estatus")
+    List<Long> buscarIdsPendentes(@Param("estatus") Estatus estatus);
 }

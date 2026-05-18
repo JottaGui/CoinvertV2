@@ -10,13 +10,13 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 import projeto_integrado.Entidades.User;
+import projeto_integrado.Repositories.OpcambioRepo;
 import projeto_integrado.Repositories.RepositorioUser;
 import projeto_integrado.dto.RegistreDTO;
+
+import java.math.BigDecimal;
 
 @Controller
 public class ControllerWeb {
@@ -25,7 +25,14 @@ public class ControllerWeb {
     private RepositorioUser  userRepository;
 
     @Autowired
+    private final OpcambioRepo opcambioRepo;
+
+    @Autowired
     private PasswordEncoder passwordEncoder;
+
+    public ControllerWeb(OpcambioRepo opcambioRepo) {
+        this.opcambioRepo = opcambioRepo;
+    }
 
     @GetMapping("/")
     public String home() {
@@ -43,8 +50,9 @@ public class ControllerWeb {
     }
 
     @GetMapping("/dash")
-    public String mostrardash(Model model,
-                              @AuthenticationPrincipal User principal) {
+    public String mostrardash(@AuthenticationPrincipal User principal,
+                              @RequestParam(required = false) String moeda,
+                              Model model) {
 
         if (principal == null) {
             return "redirect:/";
@@ -56,7 +64,23 @@ public class ControllerWeb {
             return "redirect:/";
         }
 
+        // Define moeda padrão caso venha null ou vazia
+        if (moeda == null || moeda.isBlank()) {
+            moeda = "USD";
+        }
+
+        moeda = moeda.trim().toUpperCase();
+
+        BigDecimal total = opcambioRepo.somarMoedaPorUsuario(moeda, usuario.getId());
+
+        if (total == null) {
+            total = BigDecimal.ZERO;
+        }
+
         model.addAttribute("usuario", usuario);
+        model.addAttribute("moedaSelecionada", moeda);
+        model.addAttribute("totalMoeda", total);
+
         return "dashboard";
     }
 

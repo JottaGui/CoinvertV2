@@ -134,8 +134,8 @@
               <div>
                 <span>Saldo disponível</span>
 
-                <strong th:text="${saldoFormatado != null ? saldoFormatado : '$ 0,00'}">
-                  $ 0,00
+                <strong th:text="${moedaSelecionada + ' ' + #numbers.formatDecimal(totalMoeda, 1, 'POINT', 2, 'COMMA')}">
+                  USD 0,00
                 </strong>
               </div>
             </div>

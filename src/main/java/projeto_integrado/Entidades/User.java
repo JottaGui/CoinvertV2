@@ -28,7 +28,7 @@ public UserRoles roles;
 
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
-private int id;
+private long id;
 
 	public User() {}
 
@@ -56,11 +56,11 @@ private int id;
 		this.email = email;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
