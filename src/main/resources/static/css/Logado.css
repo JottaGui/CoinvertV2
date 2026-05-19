@@ -1,14 +1,50 @@
+@charset "UTF-8";
+
+/* =========================================================
+   COINVERT - PÁGINA PRINCIPAL / CONVERSOR
+   ========================================================= */
+
+/* =========================
+   Variáveis globais
+   ========================= */
+
 :root {
     --bg-dark: #070d14;
+    --bg-deep: #050a11;
+
     --panel-dark: rgba(15, 23, 34, 0.94);
     --panel-soft: rgba(22, 33, 48, 0.88);
+    --panel-card: rgba(9, 15, 25, 0.72);
+
     --border-soft: rgba(148, 163, 184, 0.22);
+    --border-medium: rgba(148, 163, 184, 0.30);
+
     --text-main: #f8fafc;
     --text-muted: #a8b3c5;
+
     --blue: #0d6efd;
     --blue-hover: #2b7fff;
+    --blue-soft: rgba(13, 110, 253, 0.14);
+
     --green: #31d07f;
+    --green-hover: #42e894;
+    --green-soft: rgba(49, 208, 127, 0.12);
+
+    --red: #ef4444;
+    --purple: #6366f1;
+    --cyan: #22d3ee;
+
+    --radius-md: 14px;
+    --radius-lg: 18px;
+    --radius-xl: 24px;
+
+    --shadow-card: 0 28px 80px rgba(0, 0, 0, 0.46);
+    --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.28);
 }
+
+/* =========================
+   Reset / Base
+   ========================= */
 
 * {
     box-sizing: border-box;
@@ -32,20 +68,35 @@ body {
     background-attachment: fixed;
 }
 
-/* Página principal */
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+/* =========================
+   Página
+   ========================= */
 
 .coinvert-page {
     min-height: 100vh;
-    background: radial-gradient(circle at top, rgba(31, 111, 235, 0.10), transparent 38%);
+    background:
+        radial-gradient(circle at top, rgba(31, 111, 235, 0.12), transparent 38%),
+        radial-gradient(circle at bottom left, rgba(49, 208, 127, 0.08), transparent 34%);
 }
 
-/* Header */
+/* =========================
+   Header
+   ========================= */
 
 .coinvert-header {
     height: 92px;
-    background: rgba(7, 13, 20, 0.92);
+    background: rgba(7, 13, 20, 0.94);
     border-bottom: 1px solid rgba(148, 163, 184, 0.14);
     backdrop-filter: blur(14px);
+    position: relative;
+    z-index: 1000;
 }
 
 .coinvert-header-content {
@@ -59,35 +110,140 @@ body {
 }
 
 .coinvert-brand {
-    display: flex;
+    display: inline-flex;
     align-items: center;
+    justify-content: center;
     text-decoration: none;
 }
 
 .coinvert-logo {
     width: 138px;
-    max-height: 54px;
+    max-height: 58px;
     object-fit: contain;
-    border-radius: 8px;
+    display: block;
+    border-radius: 10px;
 }
 
-.coinvert-user {
-    display: flex;
+/* =========================
+   Usuário / Dropdown
+   ========================= */
+
+.dropdown {
+    position: relative;
+}
+
+.coinvert-user,
+.coinvert-user.dropdown-toggle {
+    min-width: 58px;
+    height: 58px;
+    padding: 5px 10px;
+    border: 1px solid rgba(49, 208, 127, 0.24) !important;
+    border-radius: 999px;
+    background:
+        linear-gradient(145deg, rgba(17, 27, 42, 0.96), rgba(9, 15, 25, 0.96)) !important;
+    display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
-    color: #fff;
+    color: #ffffff !important;
     text-decoration: none;
+    cursor: pointer;
+    box-shadow:
+        0 12px 28px rgba(0, 0, 0, 0.32),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    transition: 0.2s ease;
+    appearance: none;
+}
+
+.coinvert-user:hover,
+.coinvert-user:focus,
+.coinvert-user.dropdown-toggle:hover,
+.coinvert-user.dropdown-toggle:focus,
+.coinvert-user.dropdown-toggle.show {
+    background:
+        linear-gradient(145deg, rgba(22, 33, 48, 0.98), rgba(9, 15, 25, 0.98)) !important;
+    border-color: rgba(49, 208, 127, 0.62) !important;
+    box-shadow:
+        0 0 0 4px rgba(49, 208, 127, 0.10),
+        0 16px 36px rgba(0, 0, 0, 0.38);
 }
 
 .coinvert-user img {
-    width: 42px;
-    height: 42px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
-    border: 2px solid rgba(255,255,255,0.55);
+    border: 2px solid rgba(49, 208, 127, 0.70);
     object-fit: cover;
+    background: #111827;
 }
 
-/* Container principal */
+.coinvert-user.dropdown-toggle::after {
+    margin-left: 6px;
+    color: #93c5fd;
+    border-top-color: #93c5fd;
+}
+
+.dropdown-menu {
+    margin-top: 12px !important;
+    min-width: 220px;
+    padding: 9px;
+    border-radius: 16px;
+    background:
+        linear-gradient(145deg, rgba(17, 27, 42, 0.98), rgba(9, 15, 25, 0.98));
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    box-shadow:
+        0 22px 55px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(14px);
+    z-index: 99999;
+}
+
+.dropdown-item {
+    min-height: 44px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    color: #e5e7eb;
+    font-size: 14px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.2s ease;
+}
+
+.dropdown-item i {
+    color: #93c5fd;
+    font-size: 17px;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+    background: rgba(13, 110, 253, 0.18);
+    color: #ffffff;
+}
+
+.dropdown-divider {
+    margin: 8px 0;
+    border-color: rgba(148, 163, 184, 0.16);
+}
+
+.logout-item {
+    color: #ff7b86;
+}
+
+.logout-item i {
+    color: #ff7b86;
+}
+
+.logout-item:hover,
+.logout-item:focus {
+    background: rgba(239, 68, 68, 0.14);
+    color: #ffffff;
+}
+
+/* =========================
+   Container principal
+   ========================= */
 
 .coinvert-main {
     width: 100%;
@@ -99,16 +255,18 @@ body {
 .converter-card {
     width: min(100%, 1180px);
     padding: 42px;
-    border-radius: 24px;
+    border-radius: var(--radius-xl);
     background:
         linear-gradient(145deg, rgba(17, 27, 42, 0.96), rgba(9, 15, 25, 0.96));
     border: 1px solid var(--border-soft);
     box-shadow:
-        0 28px 80px rgba(0, 0, 0, 0.46),
+        var(--shadow-card),
         inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
-/* Título */
+/* =========================
+   Título
+   ========================= */
 
 .converter-title-area {
     display: flex;
@@ -127,12 +285,13 @@ body {
     background: rgba(49, 208, 127, 0.10);
     border: 1px solid rgba(49, 208, 127, 0.16);
     font-size: 32px;
+    flex-shrink: 0;
 }
 
 .converter-title-area h1 {
     margin: 0;
     font-size: 34px;
-    font-weight: 800;
+    font-weight: 900;
     letter-spacing: -0.04em;
     color: var(--text-main);
 }
@@ -143,7 +302,9 @@ body {
     color: var(--text-muted);
 }
 
-/* Formulário */
+/* =========================
+   Formulário do conversor
+   ========================= */
 
 .converter-form {
     display: grid;
@@ -155,9 +316,9 @@ body {
 .field-box {
     min-height: 86px;
     padding: 13px 16px;
-    border-radius: 14px;
+    border-radius: var(--radius-md);
     background: rgba(9, 15, 25, 0.72);
-    border: 1px solid rgba(148, 163, 184, 0.30);
+    border: 1px solid var(--border-medium);
     transition: 0.2s ease;
 }
 
@@ -171,7 +332,7 @@ body {
     display: block;
     margin-bottom: 5px;
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 800;
     color: #c7d2e4;
 }
 
@@ -185,17 +346,21 @@ body {
     background: transparent;
     color: var(--text-main);
     font-size: 17px;
-    font-weight: 600;
+    font-weight: 700;
+}
+
+.field-box input::placeholder {
+    color: #64748b;
 }
 
 .field-box select option {
     background: #111827;
-    color: #fff;
+    color: #ffffff;
 }
 
 .field-value input {
     font-size: 28px;
-    font-weight: 700;
+    font-weight: 900;
     letter-spacing: -0.04em;
 }
 
@@ -210,6 +375,13 @@ body {
     background: rgba(13, 110, 253, 0.11);
     border: 1px solid rgba(59, 130, 246, 0.42);
     font-size: 27px;
+    transition: 0.2s ease;
+}
+
+.swap-button:hover {
+    background: rgba(13, 110, 253, 0.18);
+    color: #ffffff;
+    transform: translateY(-1px);
 }
 
 .btn-converter {
@@ -217,9 +389,9 @@ body {
     border: 0;
     border-radius: 14px;
     background: linear-gradient(180deg, #2d7cff, #0d6efd);
-    color: #fff;
+    color: #ffffff;
     font-size: 18px;
-    font-weight: 800;
+    font-weight: 900;
     box-shadow: 0 14px 30px rgba(13, 110, 253, 0.30);
     transition: 0.2s ease;
 }
@@ -229,7 +401,9 @@ body {
     transform: translateY(-1px);
 }
 
-/* Resultado */
+/* =========================
+   Resultado
+   ========================= */
 
 .result-wrapper {
     margin-top: 36px;
@@ -249,16 +423,19 @@ body {
     gap: 24px;
     background: rgba(22, 33, 48, 0.88);
     border: 1px solid rgba(148, 163, 184, 0.18);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.03),
+        0 16px 36px rgba(0, 0, 0, 0.18);
 }
 
 .result-card-green {
-    border-left: 3px solid #31d07f;
+    border-left: 3px solid var(--green);
     background:
         linear-gradient(90deg, rgba(49, 208, 127, 0.16), rgba(22, 33, 48, 0.70));
 }
 
 .result-card-blue {
-    border-left: 3px solid #0d6efd;
+    border-left: 3px solid var(--blue);
     background:
         linear-gradient(90deg, rgba(13, 110, 253, 0.18), rgba(22, 33, 48, 0.70));
 }
@@ -270,7 +447,7 @@ body {
     display: grid;
     place-items: center;
     flex-shrink: 0;
-    color: #fff;
+    color: #ffffff;
     font-size: 28px;
 }
 
@@ -287,18 +464,20 @@ body {
     margin-bottom: 6px;
     color: #c6d0df;
     font-size: 17px;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .result-card strong {
     display: block;
-    color: #fff;
+    color: #ffffff;
     font-size: 31px;
-    font-weight: 800;
+    font-weight: 900;
     letter-spacing: -0.04em;
 }
 
-/* Botão simulação */
+/* =========================
+   Botão Simulação
+   ========================= */
 
 .btn-simulacao {
     width: 100%;
@@ -311,9 +490,9 @@ body {
     justify-content: center;
     gap: 14px;
     background: linear-gradient(180deg, #237cff, #0d6efd);
-    color: #fff;
+    color: #ffffff;
     font-size: 21px;
-    font-weight: 800;
+    font-weight: 900;
     box-shadow: 0 16px 36px rgba(13, 110, 253, 0.28);
     transition: 0.2s ease;
 }
@@ -323,6 +502,10 @@ body {
     transform: translateY(-1px);
 }
 
+/* =========================
+   Simulação
+   ========================= */
+
 .simulation-panel {
     margin-top: 28px;
 }
@@ -331,7 +514,8 @@ body {
     margin-top: 24px;
     padding: 28px;
     border-radius: 20px;
-    background: linear-gradient(145deg, rgba(17, 27, 42, 0.96), rgba(9, 15, 25, 0.96));
+    background:
+        linear-gradient(145deg, rgba(17, 27, 42, 0.96), rgba(9, 15, 25, 0.96));
     border: 1px solid rgba(148, 163, 184, 0.18);
     box-shadow:
         0 18px 50px rgba(0, 0, 0, 0.34),
@@ -345,13 +529,13 @@ body {
 .simulation-card-header h5 {
     margin: 0;
     font-size: 24px;
-    font-weight: 800;
+    font-weight: 900;
     color: #ffffff;
 }
 
 .simulation-card-header p {
     margin: 8px 0 0;
-    color: #a8b3c5;
+    color: var(--text-muted);
     font-size: 15px;
 }
 
@@ -382,34 +566,38 @@ body {
     margin-bottom: 8px;
     color: #c6d0df;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .simulation-info strong {
     color: #ffffff;
     font-size: 28px;
-    font-weight: 800;
+    font-weight: 900;
     letter-spacing: -0.03em;
 }
 
 .simulation-info-green {
-    border-left: 3px solid #31d07f;
-    background: linear-gradient(90deg, rgba(49, 208, 127, 0.14), rgba(22, 33, 48, 0.60));
+    border-left: 3px solid var(--green);
+    background:
+        linear-gradient(90deg, rgba(49, 208, 127, 0.14), rgba(22, 33, 48, 0.60));
 }
 
 .simulation-info-blue {
-    border-left: 3px solid #0d6efd;
-    background: linear-gradient(90deg, rgba(13, 110, 253, 0.16), rgba(22, 33, 48, 0.60));
+    border-left: 3px solid var(--blue);
+    background:
+        linear-gradient(90deg, rgba(13, 110, 253, 0.16), rgba(22, 33, 48, 0.60));
 }
 
 .simulation-info-purple {
-    border-left: 3px solid #6366f1;
-    background: linear-gradient(90deg, rgba(99, 102, 241, 0.16), rgba(22, 33, 48, 0.60));
+    border-left: 3px solid var(--purple);
+    background:
+        linear-gradient(90deg, rgba(99, 102, 241, 0.16), rgba(22, 33, 48, 0.60));
 }
 
 .simulation-info-cyan {
-    border-left: 3px solid #22d3ee;
-    background: linear-gradient(90deg, rgba(34, 211, 238, 0.16), rgba(22, 33, 48, 0.60));
+    border-left: 3px solid var(--cyan);
+    background:
+        linear-gradient(90deg, rgba(34, 211, 238, 0.16), rgba(22, 33, 48, 0.60));
 }
 
 .simulation-final-result {
@@ -423,15 +611,15 @@ body {
 .simulation-final-result span {
     display: block;
     margin-bottom: 6px;
-    color: #a8b3c5;
+    color: var(--text-muted);
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .simulation-final-result strong {
     color: #ffffff;
     font-size: 22px;
-    font-weight: 800;
+    font-weight: 900;
 }
 
 .simulation-error {
@@ -441,6 +629,10 @@ body {
     border: 1px solid rgba(239, 68, 68, 0.30);
     color: #fecaca;
 }
+
+/* =========================
+   Gráfico
+   ========================= */
 
 .chart-wrapper {
     width: 100%;
@@ -455,40 +647,18 @@ body {
     height: 380px !important;
 }
 
-@media (max-width: 992px) {
-    .simulation-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 768px) {
-    .simulation-card {
-        padding: 20px;
-    }
-
-    .simulation-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .simulation-info strong {
-        font-size: 24px;
-    }
-
-    .chart-wrapper canvas {
-        height: 320px !important;
-    }
-}
-
-/* Offcanvas compra */
+/* =========================
+   Offcanvas compra
+   ========================= */
 
 .offcanvas {
     background: #0f1722;
-    color: #fff;
+    color: #ffffff;
 }
 
 .offcanvas .card {
     background: rgba(17, 27, 42, 0.98);
-    color: #fff;
+    color: #ffffff;
     border: 1px solid rgba(148, 163, 184, 0.22);
     border-radius: 18px;
 }
@@ -497,18 +667,26 @@ body {
 .offcanvas select {
     margin-bottom: 14px;
     background: #111827;
-    color: #fff;
+    color: #ffffff;
     border: 1px solid rgba(148, 163, 184, 0.35);
 }
 
-/* Toggle tema */
+.offcanvas input:focus,
+.offcanvas select:focus {
+    border-color: rgba(59, 130, 246, 0.75);
+    box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.12);
+}
+
+/* =========================
+   Toggle tema Bootstrap
+   ========================= */
 
 .bd-mode-toggle {
     z-index: 1500;
 }
 
 .btn-bd-primary {
-    --bs-btn-color: #fff;
+    --bs-btn-color: #ffffff;
     --bs-btn-bg: #1d4ed8;
     --bs-btn-border-color: #1d4ed8;
     --bs-btn-hover-bg: #2563eb;
@@ -520,25 +698,18 @@ body {
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
 }
 
-/* Ajustes Bootstrap */
-
-.dropdown-menu {
-    background: #111827;
-    border: 1px solid rgba(148, 163, 184, 0.20);
-}
-
-.dropdown-item {
-    color: #e5e7eb;
-}
-
-.dropdown-item:hover {
-    background: rgba(13, 110, 253, 0.18);
-    color: #fff;
-}
+/* =========================
+   Ajustes Bootstrap
+   ========================= */
 
 .btn-primary {
-    background: #0d6efd;
-    border-color: #0d6efd;
+    background: var(--blue);
+    border-color: var(--blue);
+}
+
+.btn-primary:hover {
+    background: var(--blue-hover);
+    border-color: var(--blue-hover);
 }
 
 /* Remove setas do input number */
@@ -549,7 +720,9 @@ input[type=number]::-webkit-inner-spin-button {
     margin: 0;
 }
 
-/* Responsivo */
+/* =========================
+   Responsivo
+   ========================= */
 
 @media (max-width: 1100px) {
     .converter-form {
@@ -566,6 +739,12 @@ input[type=number]::-webkit-inner-spin-button {
     }
 }
 
+@media (max-width: 992px) {
+    .simulation-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 @media (max-width: 768px) {
     .coinvert-header {
         height: 78px;
@@ -577,6 +756,17 @@ input[type=number]::-webkit-inner-spin-button {
 
     .coinvert-logo {
         width: 116px;
+    }
+
+    .coinvert-user,
+    .coinvert-user.dropdown-toggle {
+        min-width: 52px;
+        height: 52px;
+    }
+
+    .coinvert-user img {
+        width: 40px;
+        height: 40px;
     }
 
     .coinvert-main {
@@ -641,5 +831,110 @@ input[type=number]::-webkit-inner-spin-button {
     .btn-simulacao {
         height: 64px;
         font-size: 18px;
+    }
+
+    .simulation-card {
+        padding: 20px;
+    }
+
+    .simulation-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .simulation-info strong {
+        font-size: 24px;
+    }
+
+    .chart-wrapper canvas {
+        height: 320px !important;
+    }
+    .coinvert-header {
+        position: relative;
+        z-index: 9000;
+    }
+
+    .coinvert-header-content {
+        position: relative;
+        z-index: 9001;
+    }
+
+    .user-dropdown,
+    .coinvert-header .dropdown {
+        position: relative;
+        z-index: 9002;
+    }
+
+    .coinvert-user,
+    .coinvert-user.dropdown-toggle {
+        position: relative;
+        z-index: 9003;
+        pointer-events: auto;
+    }
+
+    .coinvert-header .dropdown-menu {
+        z-index: 99999 !important;
+    }
+
+    /* Mantém a área da simulação abaixo do header */
+    .converter-card,
+    .simulation-panel,
+    .simulation-card,
+    .simulation-card-body,
+    .simulation-grid,
+    .simulation-final-result,
+    .chart-wrapper,
+    .chart-wrapper canvas,
+    #collapseWidthExample {
+        position: relative;
+        z-index: 1;
+    }
+
+    /* Corrige o estado temporário do Bootstrap durante a animação */
+    #collapseWidthExample.collapse,
+    #collapseWidthExample.collapsing,
+    #collapseWidthExample.show {
+        z-index: 1;
+        overflow: visible;
+    }
+    .btn-simulacao {
+        position: relative;
+        z-index: 20;
+        cursor: pointer;
+    }
+
+    .simulation-collapse {
+        position: relative;
+        z-index: 1;
+    }
+
+    #collapseWidthExample.collapse:not(.show) {
+        display: none;
+    }
+
+    #collapseWidthExample.show {
+        display: block;
+    }
+
+    #collapseWidthExample.collapsing {
+        overflow: hidden;
+    }
+
+    .simulation-panel,
+    .simulation-card,
+    .simulation-card-body,
+    .simulation-result,
+    .chart-wrapper,
+    .chart-wrapper canvas {
+        position: relative;
+        z-index: 1;
+    }
+
+    .coinvert-header {
+        position: relative;
+        z-index: 9000;
+    }
+
+    .coinvert-header .dropdown-menu {
+        z-index: 99999 !important;
     }
 }

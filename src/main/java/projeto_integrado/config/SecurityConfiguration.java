@@ -36,27 +36,39 @@ public class SecurityConfiguration {
                 )
                 .userDetailsService(authorizationService)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/css/**","/static/**", "/js/**", "/img/**", "/webjars/**").permitAll()
 
-                        .requestMatchers("/", "/Coinvert","/dashboard","/recuperar-senha").permitAll()
-                        .requestMatchers("/simulacao").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/Coinvert/**").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/logado/**").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/login", "/cadastro").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/cambio/**").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/Perfil").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/login2").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/cadastro").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/logado/**").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/Coinvert/**").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/cambio/**").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/cadastro/**").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/logout").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/dashboard/**").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/dashboard/**").permitAll()
-                        .requestMatchers(HttpMethod.GET, " /recuperar-senha").permitAll()
-                        .requestMatchers(HttpMethod.POST, " /recuperar-senha-method").permitAll()
+                        .requestMatchers(
+                                "/css/**",
+                                "/js/**",
+                                "/img/**",
+                                "/static/**",
+                                "/webjars/**",
+                                "/favicon.ico"
+                        ).permitAll()
 
+                        .requestMatchers(HttpMethod.GET,
+                                "/",
+                                "/coinvert",
+                                "/login",
+                                "/cadastro",
+                                "/recuperar-senha",
+                                "/simulacao",
+                                "/error"
+                        ).permitAll()
+
+                        .requestMatchers(HttpMethod.POST,
+                                "/login",
+                                "/cadastro",
+                                "/recuperar-senha"
+                        ).permitAll()
+
+                        .requestMatchers(
+                                "/dashboard/**",
+                                "/perfil/**",
+                                "/cambio/**",
+                                "/logado/**",
+                                "/logout"
+                        ).authenticated()
 
                         .anyRequest().authenticated()
                 )
