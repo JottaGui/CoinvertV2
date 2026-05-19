@@ -106,7 +106,7 @@
   <header class="coinvert-header">
     <div class="coinvert-header-content">
 
-      <a href="/Coinvert" class="coinvert-brand">
+      <a href="/coinvert" class="coinvert-brand">
         <img th:src="@{/img/logoverde_sem.jpeg}"
              src="/img/logoverde_sem.jpeg"
              alt="CoinVert"
@@ -139,9 +139,9 @@
 
       <!-- Formulário de conversão -->
       <form action="#"
-            th:action="@{/Coinvert}"
+            th:action="@{/coinvert}"
             method="post"
-            hx-post="/Coinvert"
+            hx-post="/coinvert"
             hx-target="#resultado"
             hx-swap="innerHTML"
             hx-trigger="load, change from:select, keyup from:input[name='valor']">
@@ -154,7 +154,7 @@
                    placeholder="Valor"
                    value="1.00"
                    name="valor"
-                   hx-post="/Coinvert"
+                   hx-post="/coinvert"
                    hx-target="#resultado"
                    hx-trigger="change delay:0ms, input delay:0ms">
           </div>

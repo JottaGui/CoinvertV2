@@ -1,24 +1,23 @@
 package projeto_integrado.controllers;
 
-import com.mercadopago.exceptions.MPApiException;
-import com.mercadopago.exceptions.MPException;
-import jakarta.servlet.http.HttpSession;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import projeto_integrado.Entidades.User;
-import projeto_integrado.Repositories.RepositorioUser;
 import projeto_integrado.dto.OpCambioDTO;
 import projeto_integrado.service.Opcambioservice;
 
 @RestController
 @RequestMapping("/cambio")
-public class Pagamentocontroller {
+public class PagamentoController {
 
     private final Opcambioservice service;
-    RepositorioUser repositorioUser;
-    public Pagamentocontroller(Opcambioservice service) {
+
+    public PagamentoController(Opcambioservice service) {
         this.service = service;
     }
 
@@ -35,11 +34,9 @@ public class Pagamentocontroller {
             return ResponseEntity.ok()
                     .header("HX-Redirect", linkPagamento)
                     .build();
-
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 }
-

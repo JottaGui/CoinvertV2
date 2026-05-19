@@ -1,62 +1,60 @@
 package projeto_integrado.controllers;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.format.annotation.DateTimeFormat;
-import java.time.LocalDate;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import projeto_integrado.Infra.CurrencyAPI;
 
+import java.time.LocalDate;
+
 @Controller
-@RequestMapping("/Coinvert")
 public class CurrencyController {
 
+    private final CurrencyAPI api = new CurrencyAPI();
 
-    private CurrencyAPI api = new CurrencyAPI();
-
-    @GetMapping
-    public String paginapost() {
+    @GetMapping({"/coinvert"})
+    public String paginaInicial() {
         return "Coinvert";
     }
-    
-    @PostMapping
-    public String obterCotacao(@RequestParam String origem, @RequestParam String destino, @RequestParam double valor, Model model) {
+
+    @PostMapping({"/coinvert", "/Coinvert"})
+    public String obterCotacao(@RequestParam String origem,
+                               @RequestParam String destino,
+                               @RequestParam double valor,
+                               Model model) {
         String valorco = this.api.obterCotacao(origem, destino);
         double valorcotacao = Double.parseDouble(valorco);
-
-        Double valorconvertido = valor * valorcotacao;
+        double valorconvertido = valor * valorcotacao;
 
         model.addAttribute("cotacao", valorcotacao);
         model.addAttribute("valorConvertido", valorconvertido);
         return "Coinvert :: resultado";
     }
 
-
-
-    @PostMapping("/simulacao")
-    public String compararCotacao(
-            @RequestParam String origem,
-            @RequestParam String destino,
-            @RequestParam double valor,
-            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate data,
-            Model model) {
-
+    @PostMapping({"/coinvert/simulacao"})
+    public String compararCotacao(@RequestParam String origem,
+                                  @RequestParam String destino,
+                                  @RequestParam double valor,
+                                  @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate data,
+                                  Model model) {
         int ano = data.getYear();
         int mes = data.getMonthValue();
         int dia = data.getDayOfMonth();
+
+        if (mes < 1 || mes > 12 || dia < 1 || dia > 31) {
+            model.addAttribute("erro", "Data inválida.");
+            return "logado :: simulacao";
+        }
 
         double cotacaoAtual = Double.parseDouble(api.obterCotacao(origem, destino));
         double cotacaoPassada = Double.parseDouble(api.valoremadata(origem, destino, ano, mes, dia));
 
         double quantidadeMoeda = valor / cotacaoPassada;
         double valorHoje = quantidadeMoeda * cotacaoAtual;
-
         double diferenca = valorHoje - valor;
-
-        if (mes < 1 || mes > 12 || dia < 1 || dia > 31) {
-            model.addAttribute("erro", "Data inválida.");
-            return "logado :: simulacao";
-        }
 
         String resultado;
         if (diferenca > 0) {
@@ -76,5 +74,3 @@ public class CurrencyController {
         return "logado :: simulacao";
     }
 }
-
-
