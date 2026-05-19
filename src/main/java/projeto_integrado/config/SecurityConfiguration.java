@@ -59,7 +59,9 @@ public class SecurityConfiguration {
                         .requestMatchers(HttpMethod.POST,
                                 "/login",
                                 "/cadastro",
-                                "/recuperar-senha"
+                                "/recuperar-senha",
+                                "/coinvert",
+                                "/coinvert/simulacao"
                         ).permitAll()
 
                         .requestMatchers(
