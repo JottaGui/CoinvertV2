@@ -23,11 +23,18 @@ public interface OpcambioRepo extends JpaRepository<OpCambio, Long> {
        FROM OpCambio o
        WHERE o.moeda = :moeda
        AND o.user.id = :userId
+       AND o.estatus = 'APROVADA'
        """)
     BigDecimal somarMoedaPorUsuario(@Param("moeda") String moeda,
                                     @Param("userId") Long userId);
 
-
+    @Query("""
+       SELECT o
+       FROM OpCambio o
+       WHERE o.user.id = :userId
+       AND o.estatus = 'APROVADA'
+       """)
+    List<OpCambio> buscarOperacoes(@Param("userId") Long userId);
 
     List<OpCambio> findByUserAndEstatus(User user, Estatus Estatus);
     List<OpCambio> findByEstatus(Estatus Estatus);

@@ -23,6 +23,9 @@ public String senha;
 @NotBlank
 public String email;
 
+	@NotBlank
+public String cpf;
+
 public UserRoles roles;
 
 
@@ -34,11 +37,13 @@ private long id;
 
 
 
-	public User(String email, String senha, String nome) {
+	public User(String email, String senha, String nome, String cpf) {
 		this.email = email;
 		this.senha = senha;
 		this.nome = nome;
+		this.cpf = cpf;
 	}
+
 
 	public String getNome() {
 		return nome;
@@ -71,7 +76,15 @@ private long id;
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
+
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {

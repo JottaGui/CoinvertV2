@@ -38,7 +38,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/css/**","/static/**", "/js/**", "/img/**", "/webjars/**").permitAll()
 
-                        .requestMatchers("/", "/Coinvert","/dashboard").permitAll()
+                        .requestMatchers("/", "/Coinvert","/dashboard","/recuperar-senha").permitAll()
                         .requestMatchers("/simulacao").permitAll()
                         .requestMatchers(HttpMethod.GET, "/Coinvert/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/logado/**").permitAll()
@@ -54,7 +54,8 @@ public class SecurityConfiguration {
                         .requestMatchers(HttpMethod.GET, "/logout").permitAll()
                         .requestMatchers(HttpMethod.GET, "/dashboard/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/dashboard/**").permitAll()
-
+                        .requestMatchers(HttpMethod.GET, " /recuperar-senha").permitAll()
+                        .requestMatchers(HttpMethod.POST, " /recuperar-senha-method").permitAll()
 
 
                         .anyRequest().authenticated()

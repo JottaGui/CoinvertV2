@@ -1,71 +1,194 @@
 <!DOCTYPE html>
-<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org" data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+
+    <title>CoinVert - Editar Perfil</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/css/singin.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/css/perfil.css">
 </head>
+
 <body>
 
+<section class="coinvert-page perfil-page">
 
-<a href="javascript:history.back()"
-   style="
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      font-size: 2rem;
-      text-decoration: none;
-      color: #000;
-      background: rgba(255,255,255,0.8);
-      padding: 8px 12px;
-      border-radius: 5px;
-      box-shadow: 0 0 5px rgba(0,0,0,0.3);
-      z-index: 9999;
-      transition: background-color 0.3s, color 0.3s;
-   "
-   onmouseover="this.style.backgroundColor='#000'; this.style.color='#fff';"
-   onmouseout="this.style.backgroundColor='rgba(255,255,255,0.8)'; this.style.color='#000';"
-   aria-label="Voltar"
->
-    &#8592;
-</a>
+    <header class="coinvert-header">
+        <div class="coinvert-header-content">
+            <a th:href="@{/Coinvert}" href="/Coinvert" class="coinvert-brand">
+                <img th:src="@{/img/logoverde_sem.jpeg}"
+                     src="/img/logoverde_sem.jpeg"
+                     alt="CoinVert"
+                     class="coinvert-logo">
+            </a>
+        </div>
+    </header>
 
-<main class="form-signin w-100 m-auto">
-    <form th:action="@{/Perfil/editar-dados}" method="post">
-        <h1 class="h3 mb-3 fw-normal">Altere seus dados</h1>
-
-        <div class="form-floating mb-2">
-            <input type="text" class="form-control" id="nome" name="nome" placeholder="Seu nome" th:value="${usuario.nome}">
-            <label for="nome">Nome</label>
+    <!-- Pop-up de erro vindo do backend -->
+    <div th:if="${erro}" id="popupErroBackend" class="coinvert-toast coinvert-toast-error" role="alert">
+        <div class="coinvert-toast-icon">
+            <i class="bi bi-exclamation-triangle-fill"></i>
         </div>
 
-        <div class="form-floating mb-2">
-            <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" th:value="${usuario.email}">
-            <label for="email">Email</label>
+        <div class="coinvert-toast-content">
+            <strong>Erro ao atualizar</strong>
+            <span th:text="${erro}">Não foi possível atualizar seus dados.</span>
         </div>
 
-        <div class="form-floating mb-2">
-            <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha">
-            <label for="senha">Nova senha</label>
+        <button type="button" class="coinvert-toast-close" onclick="fecharPopup('popupErroBackend')">
+            <i class="bi bi-x-lg"></i>
+        </button>
+
+        <div class="coinvert-toast-progress"></div>
+    </div>
+
+    <!-- Pop-up de sucesso vindo do backend -->
+    <div th:if="${sucesso}" id="popupSucessoBackend" class="coinvert-toast coinvert-toast-success" role="alert">
+        <div class="coinvert-toast-icon">
+            <i class="bi bi-check-circle-fill"></i>
         </div>
 
-        <div class="form-floating mb-2">
-            <input type="password" class="form-control" id="confirmarSenha" name="confirmarSenha" placeholder="Confirme sua senha">
-            <label for="confirmarSenha">Confirmar senha</label>
+        <div class="coinvert-toast-content">
+            <strong>Perfil atualizado</strong>
+            <span th:text="${sucesso}">Seus dados foram atualizados com sucesso.</span>
         </div>
 
-        <button href="/dash" class="btn btn-success w-100 py-2" type="submit">Salvar alterações</button>
-    </form>
-</main>
+        <button type="button" class="coinvert-toast-close" onclick="fecharPopup('popupSucessoBackend')">
+            <i class="bi bi-x-lg"></i>
+        </button>
 
+        <div class="coinvert-toast-progress"></div>
+    </div>
+
+    <main class="perfil-main">
+
+        <section class="perfil-card">
+
+            <a th:href="@{/dash}" href="/dash" class="back-link" aria-label="Voltar">
+                <i class="bi bi-arrow-left"></i>
+                Voltar para carteira
+            </a>
+
+            <div class="perfil-title-area">
+                <div class="perfil-title-icon">
+                    <i class="bi bi-person-gear"></i>
+                </div>
+
+                <div>
+                    <h1>Editar perfil</h1>
+                    <p>Atualize seus dados de acesso e informações pessoais.</p>
+                </div>
+            </div>
+
+            <form id="perfilForm"
+                  th:action="@{/Perfil/editar-dados}"
+                  action="/Perfil/editar-dados"
+                  method="post"
+                  novalidate>
+
+                <div class="form-grid">
+
+                    <div class="field-box">
+                        <label for="nome">Nome</label>
+
+                        <div class="input-wrapper">
+                            <i class="bi bi-person"></i>
+
+                            <input type="text"
+                                   id="nome"
+                                   name="nome"
+                                   placeholder="Seu nome"
+                                   autocomplete="name"
+                                   th:value="${usuario != null ? usuario.nome : ''}"
+                                   required>
+                        </div>
+
+                        <small class="field-error" id="erroNome"></small>
+                    </div>
+
+                    <div class="field-box">
+                        <label for="email">E-mail</label>
+
+                        <div class="input-wrapper">
+                            <i class="bi bi-envelope"></i>
+
+                            <input type="email"
+                                   id="email"
+                                   name="email"
+                                   placeholder="seuemail@exemplo.com"
+                                   autocomplete="email"
+                                   th:value="${usuario != null ? usuario.email : ''}"
+                                   required>
+                        </div>
+
+                        <small class="field-error" id="erroEmail"></small>
+                    </div>
+
+                    <div class="field-box">
+                        <label for="senha">Nova senha</label>
+
+                        <div class="input-wrapper">
+                            <i class="bi bi-lock"></i>
+
+                            <input type="password"
+                                   id="senha"
+                                   name="senha"
+                                   placeholder="Deixe em branco para não alterar"
+                                   autocomplete="new-password">
+
+                            <button type="button" class="password-toggle" onclick="alternarSenha('senha', 'iconeSenha')">
+                                <i class="bi bi-eye" id="iconeSenha"></i>
+                            </button>
+                        </div>
+
+                        <small class="field-error" id="erroSenha"></small>
+                    </div>
+
+                    <div class="field-box">
+                        <label for="confirmarSenha">Confirmar senha</label>
+
+                        <div class="input-wrapper">
+                            <i class="bi bi-shield-lock"></i>
+
+                            <input type="password"
+                                   id="confirmarSenha"
+                                   name="confirmarSenha"
+                                   placeholder="Confirme a nova senha"
+                                   autocomplete="new-password">
+
+                            <button type="button" class="password-toggle" onclick="alternarSenha('confirmarSenha', 'iconeConfirmarSenha')">
+                                <i class="bi bi-eye" id="iconeConfirmarSenha"></i>
+                            </button>
+                        </div>
+
+                        <small class="field-error" id="erroConfirmarSenha"></small>
+                    </div>
+
+                </div>
+
+                <button class="perfil-btn" type="submit">
+                    <i class="bi bi-check2-circle"></i>
+                    Salvar alterações
+                </button>
+
+            </form>
+
+            <div class="perfil-footer">
+                <span>Deseja voltar sem salvar?</span>
+                <a th:href="@{/dash}" href="/dash">Ir para minha carteira</a>
+            </div>
+
+        </section>
+
+    </main>
+
+</section>
+
+
+<script src="/js/perfil.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-
-
-
 </body>
-
-
 </html>

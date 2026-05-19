@@ -32,9 +32,31 @@
     </div>
   </header>
 
+  <div th:if="${erro_delete}" id="popupErro" class="coinvert-toast coinvert-toast-error" role="alert">
+    <div class="coinvert-toast-icon">
+      <i class="bi bi-exclamation-triangle-fill"></i>
+    </div>
+
+    <div class="coinvert-toast-content">
+      <strong>Não foi possível concluir</strong>
+      <span th:text="${erro_delete}">Erro ao deletar conta.</span>
+    </div>
+
+    <button type="button" class="coinvert-toast-close" onclick="fecharPopup('popupErro')" aria-label="Fechar aviso">
+      <i class="bi bi-x-lg"></i>
+    </button>
+
+    <div class="coinvert-toast-progress"></div>
+  </div>
+
   <main class="dashboard-main">
 
     <section class="dashboard-card">
+
+      <a href="javascript:history.back()" class="back-link" aria-label="Voltar">
+        <i class="bi bi-arrow-left"></i>
+        Voltar
+      </a>
 
       <!-- Título do dashboard -->
       <div class="dashboard-title-area">
@@ -76,10 +98,13 @@
               Editar perfil
             </a>
 
-            <a th:href="@{/perfil/deletar}" href="/perfil/deletar" class="profile-action-btn delete-btn">
+            <button type="button"
+                    class="profile-action-btn delete-btn"
+                    data-bs-toggle="modal"
+                    data-bs-target="#deleteAccountModal">
               <i class="bi bi-trash3"></i>
               Deletar conta
-            </a>
+            </button>
           </div>
 
         </aside>
@@ -168,28 +193,28 @@
 
                 <tbody>
 
-                <tr th:each="compra : ${compras}">
+                <tr th:each="op : ${operacoes}">
                   <td>
                                         <span class="coin-dot"
-                                              th:classappend="${compra.moeda == 'USD' ? ' coin-usd' :
-                                                             (compra.moeda == 'EUR' ? ' coin-eur' :
-                                                             (compra.moeda == 'GBP' ? ' coin-gbp' :
-                                                             (compra.moeda == 'BRL' ? ' coin-brl' : ' coin-default')))}">
+                                              th:classappend="${moeda == 'USD' ? ' coin-usd' :
+                                                             (moeda == 'EUR' ? ' coin-eur' :
+                                                             (moeda == 'GBP' ? ' coin-gbp' :
+                                                             (moeda == 'BRL' ? ' coin-brl' : ' coin-default')))}">
                                         </span>
 
-                    <span th:text="${compra.moeda}">USD</span>
+                    <span th:text="${op.moeda}">USD</span>
                   </td>
 
-                  <td th:text="${compra.valorFormatado != null ? compra.valorFormatado : compra.valor}">
-                    $ 25,50
+                  <td th:text="${#numbers.formatDecimal(op.quantidademoeda, 1, 'POINT', 2, 'COMMA')}">
+
                   </td>
 
-                  <td th:text="${compra.dataFormatada != null ? compra.dataFormatada : compra.data}">
-                    20/05/2024 14:32
+                  <td th:text="${op.data_op != null ? op.data_op : op.data_op}">
+
                   </td>
                 </tr>
 
-                <tr th:if="${compras == null or #lists.isEmpty(compras)}">
+                <tr th:if="${operacoes == null or #lists.isEmpty(operacoes)}">
                   <td colspan="3" class="empty-row">
                     <div class="empty-state">
                       <i class="bi bi-bag-x"></i>
@@ -212,9 +237,61 @@
     </section>
 
   </main>
+  <div class="modal fade coinvert-modal" id="deleteAccountModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+
+        <div class="modal-icon danger">
+          <i class="bi bi-trash3-fill"></i>
+        </div>
+
+        <div class="modal-body">
+          <h2>Deletar conta?</h2>
+
+          <p>
+            Essa ação removerá sua conta da plataforma CoinVert.
+            Confirme apenas se realmente deseja continuar.
+          </p>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="modal-btn cancel" data-bs-dismiss="modal">
+            Cancelar
+          </button>
+
+          <a th:href="@{/perfil/deletar}" href="/perfil/deletar" class="modal-btn danger">
+            Sim, deletar
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
 
 </section>
+<script>
+  function fecharPopup(id) {
+       const popup = document.getElementById(id);
 
+       if (!popup) return;
+
+       popup.classList.add("saindo");
+
+       setTimeout(function () {
+           popup.remove();
+       }, 250);
+   }
+
+   document.addEventListener("DOMContentLoaded", function () {
+       const popup = document.getElementById("popupErro");
+
+       if (popup) {
+           setTimeout(function () {
+               fecharPopup("popupErro");
+           }, 5000);
+       }
+   });
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>

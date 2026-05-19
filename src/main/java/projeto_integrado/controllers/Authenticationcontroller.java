@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import projeto_integrado.dto.AuthenticationDTO;
 import projeto_integrado.dto.LoginResponseDTO;
 import projeto_integrado.dto.RegistreDTO;
@@ -39,7 +40,8 @@ import projeto_integrado.Repositories.RepositorioUser;
 
 		@PostMapping("/login2")
 		public String login(@ModelAttribute @Valid AuthenticationDTO data,
-							HttpServletResponse response) {
+							HttpServletResponse response,
+							RedirectAttributes redirectAttributes) {
 			try {
 				var auth = authenticationManager.authenticate(
 						new UsernamePasswordAuthenticationToken(data.email(), data.senha())
@@ -50,26 +52,30 @@ import projeto_integrado.Repositories.RepositorioUser;
 				cookie.setPath("/");
 				cookie.setMaxAge(2 * 60 * 60);
 				response.addCookie(cookie);
+				redirectAttributes.addFlashAttribute("sucesso", "Cadastro realizado com sucesso. Faça login para continuar.");
 				return "redirect:/logado";
 			} catch (Exception e) {
-				return "email ou senha invalidos";
+				redirectAttributes.addFlashAttribute("erro", "E-mail ou senha inválidos.");
+				return "redirect:/login";
 			}
 		}
 
 
-		@PostMapping("/recuperar-senha")
-		public String recuperarSenha(@RequestParam String email, Model model) {
+		@PostMapping("/recuperar-senha-method")
+		public String recuperarSenha(@RequestParam String email,
+									 RedirectAttributes redirectAttributes,
+									 Model model) {
 			User usuario = userRepository.findByEmail(email);
+
 
 			if (usuario != null) {
 				String assunto = "Recuperação de Senha";
 				String corpo = "Olá, " + usuario.getNome() + "\n\nSua senha é: " + usuario.getSenha();
 				emailService.enviarEmail(email, assunto, corpo);
-				model.addAttribute("mensagem", "Senha enviada para o e-mail.");
+				redirectAttributes.addFlashAttribute("mensagem", "Senha enviada para o e-mail.");
 			} else {
-				model.addAttribute("mensagem", "E-mail não encontrado.");
+				redirectAttributes.addFlashAttribute("mensagem", "E-mail não encontrado.");
 			}
-
 			return "recuperar-Senha";
 		}
 

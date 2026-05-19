@@ -10,13 +10,17 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import projeto_integrado.Entidades.OpCambio;
 import projeto_integrado.Entidades.User;
 import projeto_integrado.Repositories.OpcambioRepo;
 import projeto_integrado.Repositories.RepositorioUser;
 import projeto_integrado.dto.RegistreDTO;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Controller
 public class ControllerWeb {
@@ -30,6 +34,8 @@ public class ControllerWeb {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    RedirectAttributes redirectAttributes;
+
     public ControllerWeb(OpcambioRepo opcambioRepo) {
         this.opcambioRepo = opcambioRepo;
     }
@@ -39,15 +45,41 @@ public class ControllerWeb {
         return "redirect:/Coinvert";
     }
 
+    @GetMapping("/recuperar-senha")
+    public String mostrarFormularioRecuperarSenha() {
+        return "recuperar-senha";
+    }
     @GetMapping("/login")
     public String mostrarlogin() {
         return "Login";
     }
 
+
+
     @GetMapping("/cadastro")
     public String mostrarcadastro() {
         return "Cadastro";
     }
+
+    @GetMapping("/perfil")
+    public String perfilpagina() {
+        return "perfil";
+    }
+
+    @GetMapping("/perfil/deletar")
+    String deletuser(@AuthenticationPrincipal User principal,  Model model, RedirectAttributes redirectAttributes){
+        User usuario = userRepository.findByEmail(principal.getEmail());
+
+       try {
+           userRepository.delete(usuario);
+           return "redirect:/cadastro";
+       } catch (Exception e) {
+           redirectAttributes.addFlashAttribute("erro_delete", "Sua conta possui transaçoes e por isso nao " +
+                   "pode ser deletada imediatamente. Ela será anlisada e deletada em ate 24hrs. Obrigado!");
+        }
+        return "redirect:/dash";
+    }
+
 
     @GetMapping("/dash")
     public String mostrardash(@AuthenticationPrincipal User principal,
@@ -64,7 +96,6 @@ public class ControllerWeb {
             return "redirect:/";
         }
 
-        // Define moeda padrão caso venha null ou vazia
         if (moeda == null || moeda.isBlank()) {
             moeda = "USD";
         }
@@ -73,6 +104,8 @@ public class ControllerWeb {
 
         BigDecimal total = opcambioRepo.somarMoedaPorUsuario(moeda, usuario.getId());
 
+        List<OpCambio> operacoes = opcambioRepo.buscarOperacoes( usuario.getId());
+
         if (total == null) {
             total = BigDecimal.ZERO;
         }
@@ -80,25 +113,38 @@ public class ControllerWeb {
         model.addAttribute("usuario", usuario);
         model.addAttribute("moedaSelecionada", moeda);
         model.addAttribute("totalMoeda", total);
+        model.addAttribute("operacoes", operacoes);
 
         return "dashboard";
     }
 
-    @GetMapping("/perfil")
-    public String perfilpagina() {
-        return "perfil";
-    }
 
     @PostMapping("/cadastro")
-    public String register(@ModelAttribute @Valid RegistreDTO data) {
-        if (userRepository.findByEmail(data.email()) != null) {
-            return "email ja cadastrado";
+    public String register(@ModelAttribute @Valid RegistreDTO data,
+                           BindingResult result,
+                           RedirectAttributes redirectAttributes) {
+        String cpfformatado = data.cpf().replaceAll("\\D","");
+        if (userRepository.findByCpf(cpfformatado) != null) {
+            redirectAttributes.addFlashAttribute("erro", "CPF já cadastrado!");
+            return "redirect:/cadastro";
         }
-        String encryptedPassword = passwordEncoder.encode(data.senha());
-        User newUser = new User(data.email(), encryptedPassword, data.nome());
-        userRepository.save(newUser);
 
-        return "redirect:/login";
+        if (userRepository.findByEmail(data.email()) != null) {
+            redirectAttributes.addFlashAttribute("erro", "E-mail já cadastrado!");
+            return "redirect:/cadastro";
+        }
+
+
+       try {
+        String encryptedPassword = passwordEncoder.encode(data.senha());
+        User newUser = new User(data.email(), encryptedPassword, data.nome(), cpfformatado);
+           userRepository.save(newUser);
+           redirectAttributes.addFlashAttribute("sucesso", "Cadastro realizado com sucesso!");
+           return "redirect:/login";
+       } catch (Exception e) {
+           redirectAttributes.addFlashAttribute("erro", "Erro ao realizar cadastro. Tente novamente.");
+           return "redirect:/cadastro";
+       }
     }
 
     @GetMapping("/logado")
@@ -122,10 +168,6 @@ public class ControllerWeb {
         return "redirect:/Coinvert";
     }
 
-    @GetMapping("/recuperar-senha")
-    public String mostrarFormularioRecuperarSenha() {
-        return "recuperar-senha";
-    }
 
 
 }

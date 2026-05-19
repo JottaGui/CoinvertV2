@@ -664,7 +664,283 @@ body {
         min-width: 680px;
     }
 }
+.coinvert-toast {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    width: min(420px, calc(100% - 32px));
+    min-height: 86px;
+    padding: 18px 48px 18px 18px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    border-radius: 18px;
+    z-index: 9999;
+    overflow: hidden;
+    color: var(--text-main);
+    background:
+        linear-gradient(145deg, rgba(17, 27, 42, 0.98), rgba(9, 15, 25, 0.98));
+    border: 1px solid rgba(148, 163, 184, 0.24);
+    box-shadow:
+        0 24px 70px rgba(0, 0, 0, 0.48),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(16px);
+    animation: toastEntrada 0.35s ease forwards;
+}
 
+.coinvert-toast::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 5px;
+    background: var(--red);
+}
+
+.coinvert-toast-error {
+    border-color: rgba(239, 68, 68, 0.38);
+}
+
+.coinvert-toast-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    color: #ffffff;
+    background: rgba(239, 68, 68, 0.18);
+    border: 1px solid rgba(239, 68, 68, 0.34);
+    font-size: 20px;
+}
+
+.coinvert-toast-content {
+    display: grid;
+    gap: 5px;
+    padding-top: 2px;
+}
+
+.coinvert-toast-content strong {
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+}
+
+.coinvert-toast-content span {
+    color: #cbd5e1;
+    font-size: 14px;
+    line-height: 1.45;
+    font-weight: 500;
+}
+
+.coinvert-toast-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 30px;
+    height: 30px;
+    border: 0;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    color: #cbd5e1;
+    background: rgba(148, 163, 184, 0.10);
+    transition: 0.2s ease;
+}
+
+.coinvert-toast-close:hover {
+    color: #ffffff;
+    background: rgba(239, 68, 68, 0.18);
+}
+
+.coinvert-toast-progress {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 100%;
+    background: linear-gradient(90deg, var(--red), #fb7185);
+    animation: toastProgress 5s linear forwards;
+}
+
+.coinvert-toast.saindo {
+    animation: toastSaida 0.25s ease forwards;
+}
+
+@keyframes toastEntrada {
+    from {
+        opacity: 0;
+        transform: translateX(28px) translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0) translateY(0);
+    }
+}
+
+@keyframes toastSaida {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateX(28px);
+    }
+}
+
+@keyframes toastProgress {
+    from {
+        width: 100%;
+    }
+
+    to {
+        width: 0%;
+    }
+}
+
+@media (max-width: 480px) {
+    .coinvert-toast {
+        top: 16px;
+        right: 16px;
+        left: 16px;
+        width: auto;
+        padding: 16px 44px 16px 16px;
+    }
+
+    .coinvert-toast-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+}
+
+/* Modal CoinVert */
+
+.coinvert-modal .modal-content {
+    padding: 34px;
+    border-radius: 24px;
+    color: var(--text-main);
+    text-align: center;
+    background:
+        linear-gradient(145deg, rgba(17, 27, 42, 0.98), rgba(9, 15, 25, 0.98));
+    border: 1px solid rgba(148, 163, 184, 0.24);
+    box-shadow:
+        0 28px 80px rgba(0, 0, 0, 0.58),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.coinvert-modal .modal-icon {
+    width: 76px;
+    height: 76px;
+    margin: 0 auto 18px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 30px;
+}
+
+.coinvert-modal .modal-icon.danger {
+    color: #ffffff;
+    background: rgba(239, 68, 68, 0.18);
+    border: 1px solid rgba(239, 68, 68, 0.38);
+}
+
+.coinvert-modal .modal-body {
+    padding: 0;
+}
+
+.coinvert-modal .modal-body h2 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 26px;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+}
+
+.coinvert-modal .modal-body p {
+    max-width: 420px;
+    margin: 12px auto 0;
+    color: var(--text-muted);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.coinvert-modal .modal-actions {
+    margin-top: 28px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.modal-btn {
+    height: 52px;
+    border-radius: 14px;
+    border: 0;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 800;
+    transition: 0.2s ease;
+}
+
+.modal-btn.cancel {
+    color: #dbeafe;
+    background: rgba(148, 163, 184, 0.10);
+    border: 1px solid rgba(148, 163, 184, 0.24);
+}
+
+.modal-btn.cancel:hover {
+    color: #ffffff;
+    background: rgba(148, 163, 184, 0.16);
+    transform: translateY(-1px);
+}
+
+.modal-btn.danger {
+    color: #ffffff;
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    border: 1px solid rgba(239, 68, 68, 0.38);
+    box-shadow: 0 14px 28px rgba(239, 68, 68, 0.18);
+}
+
+.modal-btn.danger:hover {
+    color: #ffffff;
+    background: linear-gradient(135deg, #f87171, #ef4444);
+    transform: translateY(-1px);
+}
+
+@media (max-width: 480px) {
+    .coinvert-modal .modal-content {
+        padding: 26px 20px;
+    }
+
+    .coinvert-modal .modal-actions {
+        grid-template-columns: 1fr;
+    }
+}
+.back-link {
+    width: fit-content;
+    margin-bottom: 28px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #93c5fd;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    transition: 0.2s ease;
+}
+
+.back-link:hover {
+    color: #ffffff;
+    transform: translateX(-2px);
+}
 @media (max-width: 480px) {
     .dashboard-card {
         padding: 20px;
