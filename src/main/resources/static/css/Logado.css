@@ -1,12 +1,6 @@
 @charset "UTF-8";
 
-/* =========================================================
-   COINVERT - PÁGINA PRINCIPAL / CONVERSOR
-   ========================================================= */
 
-/* =========================
-   Variáveis globais
-   ========================= */
 
 :root {
     --bg-dark: #070d14;
@@ -848,33 +842,6 @@ input[type=number]::-webkit-inner-spin-button {
     .chart-wrapper canvas {
         height: 320px !important;
     }
-    .coinvert-header {
-        position: relative;
-        z-index: 9000;
-    }
-
-    .coinvert-header-content {
-        position: relative;
-        z-index: 9001;
-    }
-
-    .user-dropdown,
-    .coinvert-header .dropdown {
-        position: relative;
-        z-index: 9002;
-    }
-
-    .coinvert-user,
-    .coinvert-user.dropdown-toggle {
-        position: relative;
-        z-index: 9003;
-        pointer-events: auto;
-    }
-
-    .coinvert-header .dropdown-menu {
-        z-index: 99999 !important;
-    }
-
     /* Mantém a área da simulação abaixo do header */
     .converter-card,
     .simulation-panel,
@@ -937,4 +904,652 @@ input[type=number]::-webkit-inner-spin-button {
     .coinvert-header .dropdown-menu {
         z-index: 99999 !important;
     }
+    /* =========================================================
+       CORREÇÃO DEFINITIVA: GRÁFICO NÃO CLICÁVEL
+       Evita o canvas do Chart.js bloquear dropdown/perfil/carteira
+       ========================================================= */
+
+    #graficoCotacao,
+    .chart-wrapper canvas {
+        pointer-events: none !important;
+    }
+
+    /* Mantém o dropdown acima de qualquer conteúdo */
+    .coinvert-header {
+        position: relative;
+        z-index: 9000;
+    }
+
+    .coinvert-header-content {
+        position: relative;
+        z-index: 9001;
+    }
+
+    .user-dropdown,
+    .coinvert-header .dropdown {
+        position: relative;
+        z-index: 9002;
+    }
+
+    .coinvert-user,
+    .coinvert-user.dropdown-toggle {
+        position: relative;
+        z-index: 9003;
+        pointer-events: auto !important;
+    }
+
+    .coinvert-header .dropdown-menu {
+        z-index: 99999 !important;
+    }
+
+    /* Mantém simulação e gráfico abaixo do header */
+    #collapseWidthExample,
+    .simulation-panel,
+    .simulation-card,
+    .simulation-card-body,
+    .simulation-result,
+    .chart-wrapper {
+        position: relative;
+        z-index: 1;
+    }
+    /* =========================================================
+       CORREÇÃO: GRÁFICO NÃO BLOQUEAR DROPDOWN DO USUÁRIO
+       ========================================================= */
+
+    /* Header sempre acima do gráfico */
+    .coinvert-header {
+        position: relative;
+        z-index: 9000 !important;
+    }
+
+    .coinvert-header-content {
+        position: relative;
+        z-index: 9001 !important;
+    }
+
+    .user-dropdown,
+    .coinvert-header .dropdown {
+        position: relative;
+        z-index: 9002 !important;
+    }
+
+    .coinvert-user,
+    .coinvert-user.dropdown-toggle {
+        position: relative;
+        z-index: 9003 !important;
+        pointer-events: auto !important;
+    }
+
+    .coinvert-header .dropdown-menu {
+        z-index: 99999 !important;
+    }
+
+    /* Gráfico fica visível, mas não recebe clique */
+    #graficoCotacao,
+    .chart-wrapper canvas {
+        pointer-events: none !important;
+    }
+
+    /* Mantém a área do gráfico abaixo do header */
+    #collapseWidthExample,
+    .simulation-panel,
+    .simulation-card,
+    .simulation-card-body,
+    .simulation-result,
+    .chart-wrapper {
+        position: relative;
+        z-index: 1 !important;
+    }
+}
+/* =========================================================
+   CORREÇÃO GLOBAL - DROPDOWN + GRÁFICO + SIMULAÇÃO
+   ========================================================= */
+
+/* Header sempre acima do conteúdo */
+.coinvert-header {
+    position: relative;
+    z-index: 9000 !important;
+}
+
+.coinvert-header-content {
+    position: relative;
+    z-index: 9001 !important;
+}
+
+.user-dropdown,
+.coinvert-header .dropdown {
+    position: relative;
+    z-index: 9002 !important;
+}
+
+.coinvert-user,
+.coinvert-user.dropdown-toggle {
+    position: relative;
+    z-index: 9003 !important;
+    pointer-events: auto !important;
+}
+
+.coinvert-header .dropdown-menu {
+    z-index: 99999 !important;
+}
+
+/* Gráfico fica visível, mas nunca recebe clique */
+#graficoCotacao,
+.chart-wrapper canvas {
+    pointer-events: none !important;
+}
+
+/* Simulação sempre abaixo do header */
+#collapseWidthExample,
+.simulation-collapse,
+.simulation-panel,
+.simulation-card,
+.simulation-card-body,
+.simulation-result,
+.simulation-grid,
+.simulation-final-result,
+.chart-wrapper {
+    position: relative;
+    z-index: 1 !important;
+}
+
+/* Botão da simulação acima do painel */
+.btn-simulacao {
+    position: relative;
+    z-index: 20;
+    cursor: pointer;
+}
+
+/* Formulário da simulação */
+.simulation-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr auto;
+    gap: 16px;
+    align-items: end;
+    margin-bottom: 26px;
+}
+
+/* Botão interno para calcular simulação */
+.btn-calcular-simulacao {
+    min-width: 170px;
+    height: 86px;
+    padding: 0 22px;
+    border: 0;
+    border-radius: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: linear-gradient(180deg, #31d07f, #16a34a);
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 900;
+    box-shadow: 0 14px 30px rgba(49, 208, 127, 0.22);
+    transition: 0.2s ease;
+}
+
+.btn-calcular-simulacao:hover {
+    background: linear-gradient(180deg, #42e894, #22c55e);
+    transform: translateY(-1px);
+}
+
+/* Collapse */
+#collapseWidthExample.collapse:not(.show) {
+    display: none;
+}
+
+#collapseWidthExample.show {
+    display: block;
+}
+
+#collapseWidthExample.collapsing {
+    overflow: hidden;
+}
+
+/* Responsivo da simulação */
+@media (max-width: 1100px) {
+    .simulation-form {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .btn-calcular-simulacao {
+        width: 100%;
+        min-width: 100%;
+        height: 64px;
+    }
+}
+
+@media (max-width: 768px) {
+    .simulation-form {
+        grid-template-columns: 1fr;
+    }
+}
+/* =========================================================
+   COINVERT - SIMULAÇÃO TRADE STYLE
+   ========================================================= */
+
+.coinvert-header {
+    position: relative;
+    z-index: 9000 !important;
+}
+
+.coinvert-header-content {
+    position: relative;
+    z-index: 9001 !important;
+}
+
+.user-dropdown,
+.coinvert-header .dropdown {
+    position: relative;
+    z-index: 9002 !important;
+}
+
+.coinvert-user,
+.coinvert-user.dropdown-toggle {
+    position: relative;
+    z-index: 9003 !important;
+    pointer-events: auto !important;
+}
+
+.coinvert-header .dropdown-menu {
+    z-index: 99999 !important;
+}
+
+#collapseWidthExample,
+.simulation-collapse,
+.simulation-panel,
+.simulation-result,
+.trade-simulation-content,
+.trade-chart-card,
+.trade-chart-wrapper,
+.chart-wrapper {
+    position: relative;
+    z-index: 1 !important;
+}
+
+#graficoCotacao,
+.chart-wrapper canvas {
+    pointer-events: none !important;
+}
+
+.trade-simulation-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 170px;
+    gap: 16px;
+    align-items: end;
+    margin-bottom: 28px;
+}
+
+.btn-trade-simular {
+    height: 86px;
+    padding: 0 22px;
+    border: 0;
+    border-radius: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: linear-gradient(180deg, #31d07f, #16a34a);
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 900;
+    box-shadow: 0 14px 30px rgba(49, 208, 127, 0.22);
+    transition: 0.2s ease;
+}
+
+.btn-trade-simular:hover {
+    background: linear-gradient(180deg, #42e894, #22c55e);
+    transform: translateY(-1px);
+}
+
+.trade-simulation-content {
+    margin-top: 24px;
+    padding: 30px;
+    border-radius: 24px;
+    background:
+        radial-gradient(circle at top right, rgba(49, 208, 127, 0.06), transparent 28%),
+        linear-gradient(145deg, rgba(17, 27, 42, 0.96), rgba(9, 15, 25, 0.96));
+    border: 1px solid rgba(148, 163, 184, 0.20);
+    box-shadow:
+        0 18px 50px rgba(0, 0, 0, 0.34),
+        inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.trade-header,
+.trade-chart-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 22px;
+}
+
+.trade-header h5,
+.trade-chart-header h5 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: -0.03em;
+}
+
+.trade-header p,
+.trade-chart-header p {
+    margin: 8px 0 0;
+    color: var(--text-muted);
+    font-size: 15px;
+}
+
+.trade-range-badge,
+.trade-chart-badge {
+    min-height: 42px;
+    padding: 0 14px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: #dbeafe;
+    background: rgba(13, 110, 253, 0.10);
+    border: 1px solid rgba(59, 130, 246, 0.25);
+    font-size: 14px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.trade-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 24px;
+}
+
+.trade-info-card {
+    min-height: 124px;
+    padding: 20px 22px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    background: rgba(22, 33, 48, 0.72);
+    border: 1px solid rgba(148, 163, 184, 0.20);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.03),
+        0 14px 32px rgba(0, 0, 0, 0.18);
+}
+
+.trade-info-card span {
+    display: block;
+    color: #d6e1f0;
+    font-size: 14px;
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+
+.trade-info-card strong {
+    display: block;
+    color: #ffffff;
+    font-size: 29px;
+    font-weight: 950;
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+
+.trade-info-card small {
+    display: block;
+    margin-top: 12px;
+    color: #9fb0c4;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.trade-card-icon {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    font-size: 24px;
+}
+
+.trade-info-green {
+    border-left: 3px solid var(--green);
+    background: linear-gradient(90deg, rgba(49, 208, 127, 0.14), rgba(22, 33, 48, 0.68));
+}
+
+.trade-info-green .trade-card-icon {
+    color: var(--green);
+    background: rgba(49, 208, 127, 0.12);
+}
+
+.trade-info-blue {
+    border-left: 3px solid var(--blue);
+    background: linear-gradient(90deg, rgba(13, 110, 253, 0.14), rgba(22, 33, 48, 0.68));
+}
+
+.trade-info-blue .trade-card-icon {
+    color: #60a5fa;
+    background: rgba(13, 110, 253, 0.15);
+}
+
+.trade-info-purple {
+    border-left: 3px solid var(--purple);
+    background: linear-gradient(90deg, rgba(99, 102, 241, 0.15), rgba(22, 33, 48, 0.68));
+}
+
+.trade-info-purple .trade-card-icon {
+    color: #a5b4fc;
+    background: rgba(99, 102, 241, 0.16);
+}
+
+.trade-info-cyan {
+    border-left: 3px solid var(--cyan);
+    background: linear-gradient(90deg, rgba(34, 211, 238, 0.14), rgba(22, 33, 48, 0.68));
+}
+
+.trade-info-cyan .trade-card-icon {
+    color: var(--cyan);
+    background: rgba(34, 211, 238, 0.14);
+}
+
+.trade-result-box {
+    min-height: 96px;
+    margin-bottom: 28px;
+    padding: 22px 26px;
+    border-radius: 18px;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 20px;
+    align-items: center;
+    background: rgba(13, 110, 253, 0.08);
+    border: 1px solid rgba(59, 130, 246, 0.22);
+}
+
+.trade-result-box span {
+    display: block;
+    color: #a8b3c5;
+    font-size: 14px;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.trade-result-box strong {
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: 950;
+    letter-spacing: -0.03em;
+}
+
+.trade-result-description {
+    text-align: right;
+}
+
+.trade-result-description span {
+    margin: 0 0 10px;
+    color: #cbd5e1;
+    font-size: 15px;
+    line-height: 1.45;
+}
+
+.trade-badge-positive,
+.trade-badge-negative {
+    width: fit-content;
+    margin-left: auto;
+    padding: 7px 12px;
+    border-radius: 10px;
+    font-size: 14px !important;
+    font-weight: 900 !important;
+}
+
+.trade-badge-positive {
+    color: #86efac !important;
+    background: rgba(49, 208, 127, 0.13);
+    border: 1px solid rgba(49, 208, 127, 0.22);
+}
+
+.trade-badge-negative {
+    color: #fecaca !important;
+    background: rgba(239, 68, 68, 0.13);
+    border: 1px solid rgba(239, 68, 68, 0.22);
+}
+
+.trade-chart-card {
+    padding: 26px;
+    border-radius: 20px;
+    background: rgba(8, 15, 24, 0.58);
+    border: 1px solid rgba(148, 163, 184, 0.14);
+}
+
+.trade-chart-wrapper {
+    padding: 16px 18px 10px;
+    border-radius: 18px;
+    background: rgba(5, 10, 17, 0.58);
+}
+
+.trade-chart-wrapper canvas {
+    width: 100% !important;
+    height: 360px !important;
+}
+
+@media (max-width: 1100px) {
+    .trade-simulation-form {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .btn-trade-simular {
+        width: 100%;
+        height: 64px;
+    }
+
+    .trade-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .trade-result-box {
+        grid-template-columns: 1fr;
+    }
+
+    .trade-result-description {
+        text-align: left;
+    }
+
+    .trade-badge-positive,
+    .trade-badge-negative {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .trade-simulation-content {
+        padding: 20px;
+    }
+
+    .trade-header,
+    .trade-chart-header {
+        flex-direction: column;
+    }
+
+    .trade-simulation-form,
+    .trade-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .trade-info-card strong {
+        font-size: 25px;
+    }
+
+    .trade-chart-wrapper canvas {
+        height: 300px !important;
+    }
+}
+/* =========================================================
+   AJUSTE FINO - VISUAL FINAL DA SIMULAÇÃO
+   ========================================================= */
+
+.trade-simulation-content {
+    padding: 32px;
+    border-radius: 26px;
+}
+
+.trade-simulation-form {
+    margin-bottom: 30px;
+}
+
+.trade-info-card {
+    min-height: 138px;
+    padding: 24px 26px;
+}
+
+.trade-info-card strong {
+    font-size: 28px;
+}
+
+.trade-info-card small {
+    line-height: 1.35;
+}
+
+.trade-result-box {
+    min-height: 104px;
+    padding: 24px 26px;
+    border-radius: 20px;
+}
+
+.trade-result-box strong {
+    font-size: 26px;
+}
+
+.trade-result-description span {
+    font-size: 15px;
+    max-width: 520px;
+    margin-left: auto;
+}
+
+.trade-chart-card {
+    margin-top: 24px;
+    padding: 28px;
+    border-radius: 22px;
+}
+
+.trade-chart-header {
+    margin-bottom: 20px;
+}
+
+.trade-chart-header h5 {
+    font-size: 25px;
+}
+
+.trade-chart-wrapper {
+    padding: 20px 22px 12px;
+    border-radius: 18px;
+}
+
+.trade-chart-wrapper canvas {
+    height: 340px !important;
+}
+
+/* Mantém o gráfico sem clique para não travar dropdown */
+#graficoCotacao,
+.chart-wrapper canvas {
+    pointer-events: none !important;
 }

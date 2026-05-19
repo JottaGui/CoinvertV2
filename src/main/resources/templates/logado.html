@@ -109,7 +109,7 @@
                      class="coinvert-logo">
             </a>
 
-            <div class="dropdown">
+            <div class="dropdown user-dropdown">
                 <button class="coinvert-user dropdown-toggle"
                         type="button"
                         id="userDropdown"
@@ -302,18 +302,20 @@
                 <i class="bi bi-calculator"></i>
                 <span id="textoBotaoSimulacao">Exibir simulação</span>
             </button>
+
             <!-- Área da simulação -->
             <div class="collapse simulation-collapse" id="collapseWidthExample">
 
                 <div class="simulation-panel">
 
-                    <form method="post"
+                    <form id="formSimulacao"
+                          method="post"
                           hx-post="/coinvert/simulacao"
                           hx-target="#simulacao"
                           hx-swap="innerHTML"
-                          hx-trigger="load, change from:select, keyup from:input, change from:input[type='date']">
+                          hx-trigger="submit">
 
-                        <div class="simulation-form">
+                        <div class="simulation-form trade-simulation-form">
 
                             <div class="field-box field-value">
                                 <label for="valorSimulacao">Valor</label>
@@ -321,12 +323,13 @@
                                        type="number"
                                        placeholder="Valor"
                                        value="1.00"
-                                       name="valor">
+                                       name="valor"
+                                       required>
                             </div>
 
                             <div class="field-box">
                                 <label for="origemSimulacao">De</label>
-                                <select id="origemSimulacao" name="origem">
+                                <select id="origemSimulacao" name="origem" required>
                                     <option value="">Moeda</option>
                                     <option value="USD" selected>USD - Dólar Americano</option>
                                     <option value="EUR">EUR - Euro</option>
@@ -353,7 +356,7 @@
 
                             <div class="field-box">
                                 <label for="destinoSimulacao">Para</label>
-                                <select id="destinoSimulacao" name="destino">
+                                <select id="destinoSimulacao" name="destino" required>
                                     <option value="">Moeda</option>
                                     <option value="USD">USD - Dólar Americano</option>
                                     <option value="EUR">EUR - Euro</option>
@@ -386,77 +389,145 @@
                                        required>
                             </div>
 
+                            <button type="submit" class="btn-trade-simular">
+                                <i class="bi bi-search"></i>
+                                Simular
+                            </button>
+
                         </div>
 
                         <!-- Resultado da simulação -->
-                        <div id="simulacao" th:fragment="simulacao" class="simulation-result">
+                        <div id="simulacao" class="simulation-result">
 
-                            <div class="simulation-card">
+                            <div th:fragment="simulacao" class="trade-simulation-content">
 
-                                <div class="simulation-card-header">
-                                    <h5>Cotação da simulação</h5>
-                                    <p>Compare a cotação passada com a cotação atual.</p>
+                                <div class="trade-header">
+                                    <div>
+                                        <h5>Cotação da simulação</h5>
+                                        <p>Compare a cotação passada com a cotação atual.</p>
+                                    </div>
+
+                                    <span class="trade-range-badge">
+                            <i class="bi bi-calendar3"></i>
+                            14 dias
+                        </span>
                                 </div>
 
-                                <div class="simulation-card-body">
+                                <p class="simulation-error" th:if="${erro != null}">
+                                    <strong>Erro:</strong>
+                                    <span th:text="${erro}"></span>
+                                </p>
 
-                                    <p class="simulation-error" th:if="${erro != null}">
-                                        <strong>Erro:</strong>
-                                        <span th:text="${erro}"></span>
-                                    </p>
+                                <div th:if="${erro == null}">
 
-                                    <div th:if="${erro == null}">
+                                    <div class="trade-grid">
 
-                                        <div class="simulation-grid">
-
-                                            <div class="simulation-info simulation-info-green">
+                                        <div class="trade-info-card trade-info-green">
+                                            <div>
                                                 <span>Cotação atual</span>
                                                 <strong id="cotacaoAtual"
-                                                        th:text="${cotacaoAtual != null ? 'R$ ' + #numbers.formatDecimal(cotacaoAtual, 2, 2) : 'Não disponível'}">
+                                                        th:text="${cotacaoAtual != null ? 'R$ ' + #numbers.formatDecimal(cotacaoAtual, 1, 2) : 'R$ 0,00'}">
                                                     R$ 0,00
                                                 </strong>
+                                                <small id="tradeVariacaoTexto">Comparado à data selecionada</small>
                                             </div>
 
-                                            <div class="simulation-info simulation-info-blue">
-                                                <span>Cotação na data</span>
-                                                <strong id="cotacaoPassada"
-                                                        th:text="${cotacaoPassada != null ? 'R$ ' + #numbers.formatDecimal(cotacaoPassada, 2, 2) : 'Não disponível'}">
-                                                    R$ 0,00
-                                                </strong>
+                                            <div class="trade-card-icon">
+                                                <i class="bi bi-currency-dollar"></i>
                                             </div>
-
-                                            <div class="simulation-info simulation-info-purple">
-                                                <span>Valor convertido na data</span>
-                                                <strong id="valorConvertidoNoPassado"
-                                                        th:text="${valorConvertidoNoPassado != null ? 'R$ ' + #numbers.formatDecimal(valorConvertidoNoPassado, 2, 2) : 'Não disponível'}">
-                                                    R$ 0,00
-                                                </strong>
-                                            </div>
-
-                                            <div class="simulation-info simulation-info-cyan">
-                                                <span>Valor hoje</span>
-                                                <strong id="valorHoje"
-                                                        th:text="${valorHoje != null ? 'R$ ' + #numbers.formatDecimal(valorHoje, 2, 2) : 'Não disponível'}">
-                                                    R$ 0,00
-                                                </strong>
-                                            </div>
-
                                         </div>
 
-                                        <div class="simulation-final-result">
-                                            <span>Resultado</span>
-                                            <strong th:text="${resultado != null ? resultado : 'Sem resultado'}">
+                                        <div class="trade-info-card trade-info-blue">
+                                            <div>
+                                                <span>Cotação na data</span>
+                                                <strong id="cotacaoPassada"
+                                                        th:text="${cotacaoPassada != null ? 'R$ ' + #numbers.formatDecimal(cotacaoPassada, 1, 2) : 'R$ 0,00'}">
+                                                    R$ 0,00
+                                                </strong>
+                                                <small>Data selecionada</small>
+                                            </div>
+
+                                            <div class="trade-card-icon">
+                                                <i class="bi bi-calendar-event"></i>
+                                            </div>
+                                        </div>
+
+                                        <div class="trade-info-card trade-info-purple">
+                                            <div>
+                                                <span>Valor convertido na data</span>
+                                                <strong id="valorConvertidoNoPassado"
+                                                        th:text="${valorConvertidoNoPassado != null ? 'R$ ' + #numbers.formatDecimal(valorConvertidoNoPassado, 1, 2) : 'R$ 0,00'}">
+                                                    R$ 0,00
+                                                </strong>
+                                                <small>Baseado na cotação antiga</small>
+                                            </div>
+
+                                            <div class="trade-card-icon">
+                                                <i class="bi bi-arrow-left-right"></i>
+                                            </div>
+                                        </div>
+
+                                        <div class="trade-info-card trade-info-cyan">
+                                            <div>
+                                                <span>Valor hoje</span>
+                                                <strong id="valorHoje"
+                                                        th:text="${valorHoje != null ? 'R$ ' + #numbers.formatDecimal(valorHoje, 1, 2) : 'R$ 0,00'}">
+                                                    R$ 0,00
+                                                </strong>
+                                                <small>Baseado na cotação atual</small>
+                                            </div>
+
+                                            <div class="trade-card-icon">
+                                                <i class="bi bi-bullseye"></i>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="trade-result-box">
+                                        <div>
+                                            <span>Resultado da simulação</span>
+                                            <strong id="resultadoTexto"
+                                                    th:text="${resultado != null ? resultado : 'Sem resultado'}">
                                                 Sem resultado
                                             </strong>
                                         </div>
 
-                                        <div class="chart-wrapper">
+                                        <div class="trade-result-description">
+                                <span id="tradeResultadoDescricao">
+                                    A simulação será atualizada após o cálculo.
+                                </span>
+
+                                            <strong id="tradeResultadoBadge" class="trade-badge-positive">
+                                                ▲ 0,00%
+                                            </strong>
+                                        </div>
+                                    </div>
+
+                                    <div class="trade-chart-card">
+
+                                        <div class="trade-chart-header">
+                                            <div>
+                                                <h5>Evolução da cotação</h5>
+                                                <p>Simulação visual dos últimos 14 dias.</p>
+                                            </div>
+
+                                            <span class="trade-chart-badge">
+                                    <i class="bi bi-graph-up-arrow"></i>
+                                    Tendência
+                                </span>
+                                        </div>
+
+                                        <div class="chart-wrapper trade-chart-wrapper">
                                             <canvas id="graficoCotacao"></canvas>
                                         </div>
 
                                     </div>
+
                                 </div>
+
                             </div>
+
                         </div>
 
                     </form>
@@ -491,7 +562,7 @@
 
         <div class="purchase-card">
 
-            <form hx-post="/cambio/comprar" hx-swap="none">
+            <form  action="/cambio/comprar" method="post" target="_blank">
 
                 <div class="mb-3">
                     <label for="moedaCompra" class="form-label">Moeda</label>
@@ -530,7 +601,7 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary w-100">
-                    Finalizar compra
+                    Checkout
                 </button>
 
             </form>

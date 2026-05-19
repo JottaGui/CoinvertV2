@@ -18,6 +18,8 @@ public interface OpcambioRepo extends JpaRepository<OpCambio, Long> {
     List<OpCambio> findByUser(User user);
     List<OpCambio> findByUserAndMoeda(User user, String moeda);
 
+
+
     @Query("""
        SELECT SUM(o.quantidademoeda)
        FROM OpCambio o
@@ -37,8 +39,11 @@ public interface OpcambioRepo extends JpaRepository<OpCambio, Long> {
     List<OpCambio> buscarOperacoes(@Param("userId") Long userId);
 
     List<OpCambio> findByUserAndEstatus(User user, Estatus Estatus);
+
     List<OpCambio> findByEstatus(Estatus Estatus);
 
     @Query("SELECT o.id FROM OpCambio o WHERE o.estatus = :estatus")
     List<Long> buscarIdsPendentes(@Param("estatus") Estatus estatus);
+
+
 }

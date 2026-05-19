@@ -12,8 +12,11 @@ import projeto_integrado.Entidades.OpCambio;
 import projeto_integrado.Repositories.OpcambioRepo;
 import projeto_integrado.enums.Estatus;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
+
+import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 @Service
 public class Verificadordepagamento {
@@ -44,6 +47,30 @@ public class Verificadordepagamento {
         }
 
 
+    }
+
+
+
+    @Scheduled(fixedRate = 240000)
+    public void apagarpendentes(){
+        List<OpCambio> operacoesPendentes = repository.findByEstatus(Estatus.PENDENTE);
+        for (OpCambio oper : operacoesPendentes) {
+            try {
+                long id = oper.getId();
+                Date data = oper.getData_op();
+                Date agora = new Date();
+                long difereca =  agora.getTime() - data.getTime();
+
+                if (difereca > 240000) {
+                    System.out.println("preference de ID " + oper.getId() + " apagada");
+                    repository.deleteById(oper.getId());
+                } else {
+                    System.out.println("Nenhuma preference apagada");
+                }
+                } catch (Exception e) {
+                    System.out.println("Erro ao verificar pagamento id " + oper.getId());
+                }
+            }
     }
 
 

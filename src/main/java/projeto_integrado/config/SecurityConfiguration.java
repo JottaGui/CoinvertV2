@@ -53,6 +53,7 @@ public class SecurityConfiguration {
                                 "/cadastro",
                                 "/recuperar-senha",
                                 "/simulacao",
+                                "/pagamento/sucesso",
                                 "/error"
                         ).permitAll()
 

@@ -1,6 +1,7 @@
 package projeto_integrado.service;
 
 import com.mercadopago.MercadoPagoConfig;
+import com.mercadopago.client.preference.PreferenceBackUrlsRequest;
 import com.mercadopago.client.preference.PreferenceClient;
 import com.mercadopago.client.preference.PreferenceItemRequest;
 import com.mercadopago.client.preference.PreferenceRequest;
@@ -83,12 +84,19 @@ public class Opcambioservice {
                         .currencyId("BRL")
                         .build();
 
+        PreferenceBackUrlsRequest backUrls = PreferenceBackUrlsRequest.builder()
+                .success("http://localhost:8081/dashboard")
+                .failure("http://localhost:8081/coinvert")
+                .pending("http://localhost:8081/coinvert")
+                .build();
+
         List<PreferenceItemRequest> items = new ArrayList<>();
         items.add(itemRequest);
 
         PreferenceRequest preferenceRequest =
                 PreferenceRequest.builder()
                         .items(items)
+                        .backUrls(backUrls)
                         .externalReference(String.valueOf(oper.getId()))
                         .build();
 
